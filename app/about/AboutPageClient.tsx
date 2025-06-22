@@ -88,13 +88,15 @@ export default function AboutPageClient() {
     {
       icon: Cpu,
       title: "Efficient Mining",
-      description: "Merge mineable with Litecoin, Dogecoin, and Pepecoin starting at block 30,000",
+      description:
+        "Auxiliary Proof-of-Work (AuxPoW) for merge mining with Litecoin and Dogecoin starting at block 30,000, leveraging existing hashpower for enhanced security",
       gradient: "from-red-400 to-rose-500",
     },
     {
       icon: TrendingUp,
       title: "Scalable Future",
-      description: "Provisions for future upgrades to handle growing network demands",
+      description:
+        "Future-proofing the network for growth with exponentially more transaction capacity than Dogecoin, making it ready for widespread cryptocurrency adoption",
       gradient: "from-indigo-400 to-purple-500",
     },
   ]
@@ -361,19 +363,22 @@ export default function AboutPageClient() {
                 </h2>
                 <div className="space-y-4 md:space-y-6 text-base md:text-lg text-gray-300 leading-relaxed dark:text-gray-400">
                   <p>
-                    DogecoinEV operates using the Scrypt algorithm in a proof-of-work system, optimized with the
-                    DigiShield mechanism to ensure blocks are consistently created every 60 seconds. It maintains
-                    efficiency with a 5-megabyte base size, allowing for a maximum block capacity of 10 megabytes to
-                    handle high transaction volumes.
+                    DogecoinEV (ticker DEV) is a fork of Dogecoin launched in January 2025, engineered to fulfill Elon
+                    Musk's vision for a more scalable and high-throughput blockchain. It preserves Dogecoin's core
+                    characteristics while introducing key changes to boost performance, particularly increasing the
+                    maximum block size to 10 MB—ten times larger than Dogecoin's 1 MB blocks.
                   </p>
                   <p>
-                    More than just a cryptocurrency, DogecoinEV is a movement. It combines high transaction
-                    capacity—capable of handling hundreds of transactions per second—with the decentralized,
-                    community-driven ethos of its predecessors.
+                    With 10 MB blocks mined every 60 seconds, DogecoinEV's theoretical throughput reaches up to 666
+                    transactions per second under ideal conditions. This represents roughly a 10× improvement over the
+                    original Dogecoin's throughput (~33 TPS maximum), while maintaining Dogecoin's fast 1-minute block
+                    time and low-fee ethos.
                   </p>
                   <p>
-                    Whether you're tipping a creator, supporting a new idea, or buying a coffee, DogecoinEV is built to
-                    scale, adapt, and thrive, all while staying true to the meme-coin magic that started it all.
+                    More than just a cryptocurrency, DogecoinEV is a movement that combines high transaction capacity
+                    with the decentralized, community-driven ethos of its predecessors. Whether you're tipping a
+                    creator, supporting a new idea, or buying a coffee, DogecoinEV is built to scale, adapt, and
+                    thrive—all while staying true to the meme-coin magic that started it all.
                   </p>
                 </div>
               </div>
