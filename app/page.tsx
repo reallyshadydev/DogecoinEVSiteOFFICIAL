@@ -33,26 +33,32 @@ export default function HomePage() {
     return () => window.removeEventListener("error", handleError)
   }, [])
 
-  const exchanges = [
-    {
-      name: "Exbitron",
-      url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
-      pair: "DEV/USDT",
-      description: "Active trading with high volume",
-    },
-    {
-      name: "Xeggex",
-      url: "https://xeggex.com/asset/DEV",
-      pair: "DEV/USDT",
-      description: "Established exchange platform",
-    },
-    {
-      name: "Nestex",
-      url: "https://trade.nestex.one/spot/DEV",
-      pair: "DEV Spot Trading",
-      description: "Modern trading interface",
-    },
-  ]
+const exchanges = [
+  {
+    name: "Exbitron",
+    url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
+    pair: "DEV/USDT",
+    description: "Active trading with high volume",
+  },
+  {
+    name: "Xeggex",
+    url: "https://xeggex.com/asset/DEV",
+    pair: "DEV/USDT",
+    description: "Established exchange platform",
+  },
+  {
+    name: "Nestex",
+    url: "https://trade.nestex.one/spot/DEV",
+    pair: "DEV Spot Trading",
+    description: "Modern trading interface",
+  },
+  {
+    name: "Mecacex",
+    url: "https://mecacex.com/market/DEVUSDT",
+    pair: "DEV/USDT",
+    description: "Secure trading with global access",
+  },
+]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
