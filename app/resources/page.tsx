@@ -301,8 +301,8 @@ export default function ResourcesPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                   {[
                     {
-                      name: "Xeggex Exchange",
-                      href: "https://xeggex.com/market/DEV_USDT",
+                      name: "MecaCEX Exchange",
+                      href: "https://mecacex.com/market/DEVUSDT",
                       description: "Professional trading platform",
                     },
                     {
