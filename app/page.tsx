@@ -41,12 +41,6 @@ const exchanges = [
     description: "Active trading with high volume",
   },
   {
-    name: "Xeggex",
-    url: "https://xeggex.com/asset/DEV",
-    pair: "DEV/USDT",
-    description: "Established exchange platform",
-  },
-  {
     name: "Nestex",
     url: "https://trade.nestex.one/spot/DEV",
     pair: "DEV Spot Trading",
