@@ -814,7 +814,7 @@ export default function AboutPageClient() {
                   Buy DEV
                 </Link>
                 <Link
-                  href="https://github.com/DogecoinEV-Foundation/DOGECOINEV-WHITEPAPER/blob/main/DOGECOINEV-WHITEPAPER"
+                  href="https://github.com/DogecoinEV-Foundation/DOGECOINEV-WHITPAPER"
                   target="_blank"
                   className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md hover:bg-white/20 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 border border-white/20 hover:border-white/40 min-h-[48px] dark:bg-gray-800/50 dark:border-gray-700/50 dark:hover:bg-gray-700/70 dark:hover:border-gray-600"
                   style={{ WebkitTapHighlightColor: "transparent" }}
