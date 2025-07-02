@@ -805,7 +805,7 @@ export default function AboutPageClient() {
                   Get Started
                 </Link>
                 <Link
-                  href="https://xeggex.com/market/DEV_USDT"
+                  href="https://mecacex.com/market/DEVUSDT"
                   target="_blank"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 min-h-[48px] dark:hover:from-green-500/90 dark:hover:to-emerald-500/90"
                   style={{ WebkitTapHighlightColor: "transparent" }}
