@@ -214,7 +214,7 @@ export default function HomePage() {
                   <DialogContent className="sm:max-w-lg bg-slate-900 border-purple-500/30 text-white">
                     <DialogHeader>
                       <DialogTitle className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        Buy $DEV 
+                        Buy DEV 
                       </DialogTitle>
                     </DialogHeader>
                     <div className="space-y-4">
