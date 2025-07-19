@@ -2,7 +2,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Pickaxe, ExternalLink, Zap, Shield, Users, ArrowRight, TrendingUp, BookOpen, Server } from "lucide-react"
+import { Pickaxe, ExternalLink, Zap, Shield, Users, TrendingUp, BookOpen } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -162,22 +162,12 @@ export default function MiningPage() {
                   href="https://miningpoolstats.stream/dogecoinev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 min-h-[48px]"
+                  className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 min-h-[48px]"
                   style={{ WebkitTapHighlightColor: "transparent" }}
                 >
                   <TrendingUp className="w-5 h-5" />
                   Pool Stats
                   <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-
-                <Link
-                  href="#getting-started"
-                  className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 min-h-[48px]"
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                >
-                  <BookOpen className="w-5 h-5" />
-                  Get Started
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
               </div>
             </div>
@@ -343,7 +333,7 @@ export default function MiningPage() {
                   <CardContent>
                     <Button
                       asChild
-                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500"
+                      className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <Link href={pool.url} target="_blank" rel="noopener noreferrer">
                         Visit Pool <ExternalLink className="ml-2 h-4 w-4" />
@@ -397,7 +387,7 @@ export default function MiningPage() {
                   <CardContent className="space-y-3">
                     <Button
                       asChild
-                      className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500"
+                      className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-400 hover:to-cyan-400 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <Link href={service.url} target="_blank" rel="noopener noreferrer">
                         Visit {service.name} <ExternalLink className="ml-2 h-4 w-4" />
@@ -406,8 +396,7 @@ export default function MiningPage() {
                     {service.tutorialUrl && (
                       <Button
                         asChild
-                        variant="outline"
-                        className="w-full border-white/20 text-white hover:bg-white/10 bg-transparent"
+                        className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 hover:border-white/50 transition-all duration-300"
                       >
                         <Link href={service.tutorialUrl} target="_blank" rel="noopener noreferrer">
                           View Tutorials <BookOpen className="ml-2 h-4 w-4" />
@@ -417,144 +406,6 @@ export default function MiningPage() {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Getting Started */}
-        <section id="getting-started" className="py-16 md:py-20 relative">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Getting Started
-              </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4">
-                Choose your path to start mining DogecoinEV today
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <Card className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
-                    <BookOpen className="w-6 h-6 text-white" />
-                  </div>
-                  <CardTitle className="text-white text-xl">New to Mining?</CardTitle>
-                  <CardDescription className="text-gray-300">
-                    Perfect for beginners who want to learn the basics
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
-                        1
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Learn about Scrypt mining</p>
-                        <p className="text-gray-400 text-sm">Understand the algorithm and requirements</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
-                        2
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Try mining rig rentals</p>
-                        <p className="text-gray-400 text-sm">Start with NiceHash or MRR to test the waters</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
-                        3
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Join a mining pool</p>
-                        <p className="text-gray-400 text-sm">Connect to LongPool or ZergPool for steady rewards</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4">
-                    <Server className="w-6 h-6 text-white" />
-                  </div>
-                  <CardTitle className="text-white text-xl">Experienced Miner?</CardTitle>
-                  <CardDescription className="text-gray-300">
-                    Already have Scrypt ASIC miners? Jump right in!
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
-                        1
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Configure your miners</p>
-                        <p className="text-gray-400 text-sm">Point your Scrypt ASICs to DEV pools</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
-                        2
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Enable merge mining</p>
-                        <p className="text-gray-400 text-sm">Mine DEV alongside LTC/DOGE for maximum profit</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
-                        3
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Start earning DEV rewards</p>
-                        <p className="text-gray-400 text-sm">Monitor your mining progress and optimize performance</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="text-center mt-12">
-              <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 max-w-2xl mx-auto">
-                <h3 className="text-xl font-bold text-white mb-4">Need Help Getting Started?</h3>
-                <p className="text-gray-300 mb-6">
-                  Join our community for mining support, tips, and real-time assistance from experienced miners.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    asChild
-                    className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500"
-                  >
-                    <Link href="/contact" className="flex items-center gap-2">
-                      <Users className="w-4 h-4" />
-                      Join Community
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-white/20 text-white hover:bg-white/10 bg-transparent"
-                  >
-                    <Link
-                      href="https://miningpoolstats.stream/dogecoinev"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
-                      <TrendingUp className="w-4 h-4" />
-                      View Stats
-                      <ExternalLink className="w-3 h-3" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
             </div>
           </div>
         </section>
