@@ -81,6 +81,14 @@ export default function NodeMapPage() {
                 About
               </Link>
               <Link
+                href="/mining"
+                className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
+                  pathname === "/mining" ? "text-purple-400" : ""
+                }`}
+              >
+                Mining
+              </Link>
+              <Link
                 href="/resources"
                 className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
                   pathname === "/resources" ? "text-purple-400" : ""
@@ -95,6 +103,14 @@ export default function NodeMapPage() {
                 }`}
               >
                 Node Map
+              </Link>
+              <Link
+                href="/widgets"
+                className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
+                  pathname === "/widgets" ? "text-purple-400" : ""
+                }`}
+              >
+                Widgets
               </Link>
               <Link
                 href="/contact"

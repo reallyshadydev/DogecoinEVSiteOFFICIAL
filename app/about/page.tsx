@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: `${getSiteUrl()}/about`,
     images: [
       {
-        url: `${getSiteUrl()}/og-image-about.png`, // You might want to create a specific OG image for the about page
+        url: `${getSiteUrl()}/og-image-about.png`,
         width: 1200,
         height: 630,
         alt: "DogecoinEV About Page",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "About DogecoinEV | Fun & Functional Cryptocurrency",
     description:
       "Learn all about DogecoinEV - the fast, secure, and community-driven crypto. Features, tech specs, roadmap, and more!",
-    images: [`${getSiteUrl()}/twitter-image-about.png`], // You might want to create a specific Twitter image
+    images: [`${getSiteUrl()}/twitter-image-about.png`],
   },
 }
 

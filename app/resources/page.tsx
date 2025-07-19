@@ -67,6 +67,14 @@ export default function ResourcesPage() {
                 About
               </Link>
               <Link
+                href="/mining"
+                className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
+                  pathname === "/mining" ? "text-purple-400" : ""
+                }`}
+              >
+                Mining
+              </Link>
+              <Link
                 href="/resources"
                 className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
                   pathname === "/resources" ? "text-purple-400" : ""
