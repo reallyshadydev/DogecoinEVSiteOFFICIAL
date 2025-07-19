@@ -33,26 +33,26 @@ export default function HomePage() {
     return () => window.removeEventListener("error", handleError)
   }, [])
 
-const exchanges = [
-  {
-    name: "Exbitron",
-    url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
-    pair: "DEV/USDT",
-    description: "Active trading with high volume",
-  },
-  {
-    name: "Nestex",
-    url: "https://trade.nestex.one/spot/DEV",
-    pair: "DEV Spot Trading",
-    description: "Modern trading interface",
-  },
-  {
-    name: "Mecacex",
-    url: "https://mecacex.com/market/DEVUSDT",
-    pair: "DEV/USDT",
-    description: "Secure trading with global access",
-  },
-]
+  const exchanges = [
+    {
+      name: "Exbitron",
+      url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
+      pair: "DEV/USDT",
+      description: "Active trading with high volume",
+    },
+    {
+      name: "Nestex",
+      url: "https://trade.nestex.one/spot/DEV",
+      pair: "DEV Spot Trading",
+      description: "Modern trading interface",
+    },
+    {
+      name: "Mecacex",
+      url: "https://mecacex.com/market/DEVUSDT",
+      pair: "DEV/USDT",
+      description: "Secure trading with global access",
+    },
+  ]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
@@ -102,6 +102,14 @@ const exchanges = [
                 }`}
               >
                 About
+              </Link>
+              <Link
+                href="/mining"
+                className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
+                  pathname === "/mining" ? "text-purple-400" : ""
+                }`}
+              >
+                Mining
               </Link>
               <Link
                 href="/resources"
@@ -214,7 +222,7 @@ const exchanges = [
                   <DialogContent className="sm:max-w-lg bg-slate-900 border-purple-500/30 text-white">
                     <DialogHeader>
                       <DialogTitle className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        Buy DEV 
+                        Buy DEV
                       </DialogTitle>
                     </DialogHeader>
                     <div className="space-y-4">

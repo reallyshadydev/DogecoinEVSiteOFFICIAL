@@ -4,34 +4,38 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
+  Menu,
   Home,
   Info,
   MessageCircle,
   Github,
   Users,
   ExternalLink,
-  MapPin,
-  Activity,
-  Menu,
-  X,
   Download,
+  Phone,
+  Map,
+  BarChart3,
+  BookOpen,
+  Pickaxe,
 } from "lucide-react"
 import { XIcon } from "@/components/x-icon"
+import { cn } from "@/lib/utils"
+
+const navigationItems = [
+  { name: "Home", href: "/", icon: Home },
+  { name: "About", href: "/about", icon: Info },
+  { name: "Mining", href: "/mining", icon: Pickaxe },
+  { name: "Node Map", href: "/node-map", icon: Map },
+  { name: "Widgets", href: "/widgets", icon: BarChart3 },
+  { name: "Resources", href: "/resources", icon: BookOpen },
+  { name: "Contact", href: "/contact", icon: Phone },
+]
 
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isPWA, setIsPWA] = useState(false)
   const [showPWAPrompt, setShowPWAPrompt] = useState(false)
   const pathname = usePathname()
-
-  const navItems = [
-    { href: "/", label: "Home", icon: Home },
-    { href: "/about", label: "About", icon: Info },
-    { href: "/resources", label: "Resources", icon: ExternalLink },
-    { href: "/node-map", label: "Node Map", icon: MapPin },
-    { href: "/widgets", label: "Widgets", icon: Activity },
-    { href: "/contact", label: "Contact", icon: MessageCircle },
-  ]
 
   // Detect PWA mode
   useEffect(() => {
@@ -102,7 +106,8 @@ export default function MobileNavigation() {
           <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-xl border-t border-white/10"></div>
           <div className="relative px-2 pt-2 pb-4">
             <div className="flex items-center justify-around">
-              {navItems.map((item) => {
+              {navigationItems.slice(0, 4).map((item) => {
+                const Icon = item.icon
                 const isActive = pathname === item.href
                 return (
                   <Link
@@ -120,9 +125,9 @@ export default function MobileNavigation() {
                         isActive ? "bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg" : ""
                       }`}
                     >
-                      <item.icon className="w-5 h-5" />
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-xs font-medium leading-tight">{item.label}</span>
+                    <span className="text-xs font-medium leading-tight">{item.name}</span>
                     {isActive && (
                       <div className="w-1 h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
                     )}
@@ -154,31 +159,31 @@ export default function MobileNavigation() {
                 className="p-2 text-gray-400 hover:text-white"
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
-                <X className="w-5 h-5" />
+                <Menu className="w-5 h-5" />
               </button>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <Link
-                href="/contact"
-                className="flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-200"
-                onClick={() => setIsOpen(false)}
-                style={{ WebkitTapHighlightColor: "transparent" }}
-              >
-                <MessageCircle className="w-5 h-5 text-purple-400" />
-                <span className="text-white font-medium">Contact</span>
-              </Link>
-
-              <Link
-                href="https://github.com/DogecoinEV-Foundation/DogecoinEV"
-                target="_blank"
-                className="flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-200"
-                onClick={() => setIsOpen(false)}
-                style={{ WebkitTapHighlightColor: "transparent" }}
-              >
-                <Github className="w-5 h-5 text-gray-400" />
-                <span className="text-white font-medium">GitHub</span>
-              </Link>
+              {navigationItems.slice(4).map((item) => {
+                const Icon = item.icon
+                const isActive = pathname === item.href
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "flex items-center gap-3 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-200",
+                      isActive
+                        ? "bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400"
+                        : "hover:bg-gray-100 dark:hover:bg-gray-800",
+                    )}
+                  >
+                    <Icon className="w-5 h-5 text-purple-400" />
+                    <span className="text-white font-medium">{item.name}</span>
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -218,7 +223,7 @@ export default function MobileNavigation() {
                 className="p-1 text-white/80 hover:text-white"
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
-                <X className="w-4 h-4" />
+                <Menu className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -234,7 +239,7 @@ export default function MobileNavigation() {
         aria-label="Toggle mobile menu"
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
-        {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        {isOpen ? <Menu className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
 
       {/* Mobile Menu Overlay */}
@@ -265,7 +270,8 @@ export default function MobileNavigation() {
           {/* Navigation */}
           <div className="flex-1 px-4 py-4 overflow-y-auto">
             <nav className="space-y-2">
-              {navItems.map((item) => {
+              {navigationItems.slice(0, 4).map((item) => {
+                const Icon = item.icon
                 const isActive = pathname === item.href
                 return (
                   <Link
@@ -279,8 +285,8 @@ export default function MobileNavigation() {
                     onClick={() => setIsOpen(false)}
                     style={{ WebkitTapHighlightColor: "transparent" }}
                   >
-                    <item.icon className="w-5 h-5 flex-shrink-0" />
-                    <span className="font-medium">{item.label}</span>
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    <span className="font-medium">{item.name}</span>
                   </Link>
                 )
               })}
