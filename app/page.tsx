@@ -46,12 +46,6 @@ export default function HomePage() {
       pair: "DEV Spot Trading",
       description: "Modern trading interface",
     },
-    {
-      name: "Mecacex",
-      url: "https://mecacex.com/market/DEVUSDT",
-      pair: "DEV/USDT",
-      description: "Secure trading with global access",
-    },
   ]
 
   return (
