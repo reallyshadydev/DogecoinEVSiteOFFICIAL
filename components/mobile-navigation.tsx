@@ -17,6 +17,7 @@ import {
   BarChart3,
   BookOpen,
   Pickaxe,
+  TrendingUp,
 } from "lucide-react"
 import { XIcon } from "@/components/x-icon"
 import { cn } from "@/lib/utils"
@@ -25,9 +26,10 @@ const navigationItems = [
   { name: "Home", href: "/", icon: Home },
   { name: "About", href: "/about", icon: Info },
   { name: "Mining", href: "/mining", icon: Pickaxe },
+  { name: "Resources", href: "/resources", icon: BookOpen },
   { name: "Node Map", href: "/node-map", icon: Map },
   { name: "Widgets", href: "/widgets", icon: BarChart3 },
-  { name: "Resources", href: "/resources", icon: BookOpen },
+  { name: "Market Data", href: "/market-data", icon: TrendingUp },
   { name: "Contact", href: "/contact", icon: Phone },
 ]
 
@@ -270,7 +272,7 @@ export default function MobileNavigation() {
           {/* Navigation */}
           <div className="flex-1 px-4 py-4 overflow-y-auto">
             <nav className="space-y-2">
-              {navigationItems.slice(0, 4).map((item) => {
+              {navigationItems.map((item) => {
                 const Icon = item.icon
                 const isActive = pathname === item.href
                 return (

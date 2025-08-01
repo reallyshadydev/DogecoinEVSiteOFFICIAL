@@ -130,6 +130,14 @@ export default function HomePage() {
                 Widgets
               </Link>
               <Link
+                href="/market-data"
+                className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
+                  pathname === "/market-data" ? "text-purple-400" : ""
+                }`}
+              >
+                Market Data
+              </Link>
+              <Link
                 href="/contact"
                 className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
                   pathname === "/contact" ? "text-purple-400" : ""
