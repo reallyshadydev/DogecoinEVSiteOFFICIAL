@@ -39,7 +39,7 @@ export default function ResourcesPage() {
     },
     {
       name: "Nestex",
-      url: "https://trade.nestex.one/spot/DEV",
+      url: "https://trade.nestexchange.one/spot/DEV",
       pair: "DEV Spot Trading",
       description: "Modern trading interface",
     },
@@ -125,6 +125,14 @@ export default function ResourcesPage() {
                 }`}
               >
                 Widgets
+              </Link>
+              <Link
+                href="/market-data"
+                className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
+                  pathname === "/market-data" ? "text-purple-400" : ""
+                }`}
+              >
+                Market Data
               </Link>
               <Link
                 href="/contact"
