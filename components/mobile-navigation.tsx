@@ -11,7 +11,6 @@ import {
   Github,
   Users,
   ExternalLink,
-  Download,
   Phone,
   Map,
   BarChart3,
@@ -36,7 +35,6 @@ const navigationItems = [
 export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isPWA, setIsPWA] = useState(false)
-  const [showPWAPrompt, setShowPWAPrompt] = useState(false)
   const pathname = usePathname()
 
   // Detect PWA mode
@@ -57,18 +55,6 @@ export default function MobileNavigation() {
 
     return () => mediaQuery.removeEventListener("change", checkPWA)
   }, [])
-
-  // Show PWA prompt for mobile browsers (not PWA)
-  useEffect(() => {
-    if (!isPWA && window.innerWidth <= 768) {
-      const hasSeenPrompt = localStorage.getItem("pwa-prompt-seen")
-      if (!hasSeenPrompt) {
-        setTimeout(() => {
-          setShowPWAPrompt(true)
-        }, 5000) // Show after 5 seconds
-      }
-    }
-  }, [isPWA])
 
   // Close menu when route changes
   useEffect(() => {
@@ -93,11 +79,6 @@ export default function MobileNavigation() {
       document.body.style.width = ""
     }
   }, [isOpen])
-
-  const dismissPWAPrompt = () => {
-    setShowPWAPrompt(false)
-    localStorage.setItem("pwa-prompt-seen", "true")
-  }
 
   // For PWA mode - show bottom navigation
   if (isPWA) {
@@ -196,48 +177,10 @@ export default function MobileNavigation() {
   // For mobile browsers - show hamburger menu
   return (
     <>
-      {/* PWA Discovery Banner */}
-      {showPWAPrompt && (
-        <div className="md:hidden fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-purple-600 to-pink-600 p-3 shadow-lg">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Download className="w-5 h-5 text-white flex-shrink-0" />
-              <div>
-                <p className="text-white font-medium text-sm">Install DogecoinEV App</p>
-                <p className="text-white/80 text-xs">Get the full app experience!</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => {
-                  // Trigger PWA install prompt if available
-                  if ("serviceWorker" in navigator) {
-                    window.location.reload()
-                  }
-                }}
-                className="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-lg text-white text-xs font-medium transition-colors"
-                style={{ WebkitTapHighlightColor: "transparent" }}
-              >
-                Add to Home
-              </button>
-              <button
-                onClick={dismissPWAPrompt}
-                className="p-1 text-white/80 hover:text-white"
-                style={{ WebkitTapHighlightColor: "transparent" }}
-              >
-                <Menu className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Mobile Menu Button - Hamburger for browsers */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`md:hidden fixed z-[60] w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 backdrop-blur-md rounded-full border-2 border-white/20 flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 ${
-          showPWAPrompt ? "top-20 right-4" : "top-4 right-4"
-        }`}
+        className="md:hidden fixed z-[60] w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 backdrop-blur-md rounded-full border-2 border-white/20 flex items-center justify-center text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 top-4 right-4"
         aria-label="Toggle mobile menu"
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
@@ -260,7 +203,7 @@ export default function MobileNavigation() {
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className={`${showPWAPrompt ? "pt-20" : "pt-16"} pb-4 px-4 border-b border-white/10`}>
+          <div className="pt-16 pb-4 px-4 border-b border-white/10">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">D</span>
@@ -354,26 +297,6 @@ export default function MobileNavigation() {
                   <ExternalLink className="w-3 h-3 ml-auto opacity-50" />
                 </Link>
               </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-white/10 px-4 py-3 bg-gradient-to-r from-purple-600/20 to-pink-600/20">
-              <div className="flex items-center gap-3 mb-2">
-                <Download className="w-5 h-5 text-purple-400" />
-                <span className="text-white font-medium text-sm">Add to Home Screen</span>
-              </div>
-              <p className="text-gray-300 text-xs mb-3">Add to home screen for app-like experience</p>
-              <button
-                onClick={() => {
-                  alert(
-                    "To add to home screen:\n\n📱 iOS Safari: Tap Share → Add to Home Screen\n🤖 Android Chrome: Tap Menu → Add to Home Screen",
-                  )
-                  setIsOpen(false)
-                }}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-3 py-2 rounded-lg text-white text-sm font-medium transition-all duration-200"
-                style={{ WebkitTapHighlightColor: "transparent" }}
-              >
-                Add to Home Screen
-              </button>
             </div>
           </div>
         </div>

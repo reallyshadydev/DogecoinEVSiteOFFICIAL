@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import PWAInstallPrompt from "@/components/pwa-install-prompt"
 import MobileNavigation from "@/components/mobile-navigation"
 import { ThemeProvider } from "@/components/theme-provider" // Assumed from shadcn/ui setup
 import { Toaster } from "@/components/ui/toaster" // For copy-to-clipboard feedback, etc.
@@ -86,7 +85,6 @@ export default function RootLayout({
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen">{children}</div>
-          <PWAInstallPrompt />
           <MobileNavigation />
           <Toaster />
         </ThemeProvider>
