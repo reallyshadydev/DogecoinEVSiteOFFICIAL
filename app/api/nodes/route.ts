@@ -1,7 +1,4 @@
 import { NextResponse } from "next/server"
-import { writeFile, readFile, mkdir } from "fs/promises"
-import { existsSync } from "fs"
-import path from "path"
 
 interface Node {
   createdAt: string
@@ -20,7 +17,7 @@ interface CachedLocation {
   lon: number
 }
 
-// Country centroids for fallback geolocation (matching your Python logic)
+// Country centroids for fallback geolocation
 const countryCentroids: Record<string, [number, number]> = {
   DE: [51.1657, 10.4515],
   CN: [35.8617, 104.1954],
@@ -41,75 +38,48 @@ const countryCentroids: Record<string, [number, number]> = {
   ZA: [-30.5595, 22.9375],
 }
 
-// Cache file path
-const cacheDir = path.join(process.cwd(), "cache")
-const cacheFile = path.join(cacheDir, "node_location_cache.json")
+const memoryCache: Record<string, CachedLocation> = {}
 
-// Load geolocation cache
-async function loadCache(): Promise<Record<string, CachedLocation>> {
-  try {
-    if (existsSync(cacheFile)) {
-      const data = await readFile(cacheFile, "utf-8")
-      return JSON.parse(data)
-    }
-  } catch (error) {
-    console.error("Error loading cache:", error)
-  }
-  return {}
-}
-
-// Save geolocation cache
-async function saveCache(cache: Record<string, CachedLocation>): Promise<void> {
-  try {
-    // Ensure cache directory exists
-    if (!existsSync(cacheDir)) {
-      await mkdir(cacheDir, { recursive: true })
-    }
-    await writeFile(cacheFile, JSON.stringify(cache, null, 2))
-  } catch (error) {
-    console.error("Error saving cache:", error)
-  }
-}
-
-// Validate IP address (matching your Python logic)
+// Validate IP address
 function isValidIP(ip: string): boolean {
   const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
   return ipv4Regex.test(ip)
 }
 
-// Get coordinates for an IP with multiple service fallbacks (matching your Python logic)
-async function getCoordinates(
-  ip: string,
-  countryCode: string,
-  cache: Record<string, CachedLocation>,
-): Promise<[number, number] | null> {
+// Get coordinates for an IP with multiple service fallbacks
+async function getCoordinates(ip: string, countryCode: string): Promise<[number, number] | null> {
   if (!isValidIP(ip)) {
     return null
   }
 
-  // Check cache first
-  if (cache[ip]) {
-    return [cache[ip].lat, cache[ip].lon]
+  // Check memory cache first
+  if (memoryCache[ip]) {
+    return [memoryCache[ip].lat, memoryCache[ip].lon]
   }
 
-  // Try multiple geolocation services for better accuracy (matching your Python services)
+  // Try multiple geolocation services for better accuracy
   const services = [`https://ip-api.com/json/${ip}`, `https://ipinfo.io/${ip}/json`, `https://ipapi.co/${ip}/json/`]
 
   for (const url of services) {
     try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 5000)
+
       const response = await fetch(url, {
-        timeout: 5000,
+        signal: controller.signal,
         headers: {
           "User-Agent": "DogecoinEV-Website/1.0",
         },
       })
+
+      clearTimeout(timeoutId)
 
       if (response.ok) {
         const data = await response.json()
 
         let coords: [number, number] | null = null
 
-        // Handle different API response formats (matching your Python logic)
+        // Handle different API response formats
         if (url.startsWith("https://ip-api.com")) {
           if (data.status === "success") {
             coords = [data.lat, data.lon]
@@ -126,29 +96,29 @@ async function getCoordinates(
         }
 
         if (coords) {
-          // Cache the result
-          cache[ip] = { lat: coords[0], lon: coords[1] }
+          // Cache the result in memory
+          memoryCache[ip] = { lat: coords[0], lon: coords[1] }
           return coords
         }
       }
     } catch (error) {
-      console.error(`Error fetching coordinates from ${url}:`, error)
+      console.error(`[v0] Error fetching coordinates from ${url}:`, error)
     }
   }
 
-  // Fallback to country centroid if all services fail (matching your Python logic)
+  // Fallback to country centroid if all services fail
   if (countryCode && countryCentroids[countryCode.toUpperCase()]) {
     const coords = countryCentroids[countryCode.toUpperCase()]
-    cache[ip] = { lat: coords[0], lon: coords[1] }
+    memoryCache[ip] = { lat: coords[0], lon: coords[1] }
     return coords
   }
 
   // If country code not found in centroids, use default location
-  console.log(`No coordinates found for IP ${ip} with country code ${countryCode}`)
+  console.log(`[v0] No coordinates found for IP ${ip} with country code ${countryCode}`)
   return [0, 0] // Default to center of map if all else fails
 }
 
-// Add randomization to avoid overlapping markers (enhanced from original)
+// Add randomization to avoid overlapping markers
 function addRandomOffset(lat: number, lon: number, maxOffset = 1.5): [number, number] {
   const latOffset = (Math.random() - 0.5) * maxOffset
   const lonOffset = (Math.random() - 0.5) * maxOffset
@@ -157,34 +127,58 @@ function addRandomOffset(lat: number, lon: number, maxOffset = 1.5): [number, nu
 
 export async function GET() {
   try {
-    console.log("Fetching nodes from DogecoinEV explorer...")
+    console.log("[v0] Starting nodes API request...")
+    console.log("[v0] Fetching nodes from DogecoinEV explorer...")
 
-    // Load cache
-    const cache = await loadCache()
+    const fetchUrl = "https://explorer.dogecoinev.com/ext/getnetworkpeers"
+    console.log("[v0] Fetching from URL:", fetchUrl)
 
-    // Fetch nodes from DogecoinEV explorer
-    const response = await fetch("https://explorer.dogecoinev.com/ext/getnetworkpeers", {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 10000)
+
+    const response = await fetch(fetchUrl, {
+      signal: controller.signal,
       headers: {
         "User-Agent": "DogecoinEV-Website/1.0",
         Accept: "application/json",
       },
-      next: { revalidate: 300 }, // Cache for 5 minutes
     })
 
-    console.log("Response status:", response.status)
+    clearTimeout(timeoutId)
+
+    console.log("[v0] Fetch response status:", response.status)
+    console.log("[v0] Fetch response ok:", response.ok)
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch nodes: ${response.status} ${response.statusText}`)
+      const errorText = await response.text()
+      console.log("[v0] Error response body:", errorText)
+      throw new Error(`Failed to fetch nodes: ${response.status} ${response.statusText} - ${errorText}`)
     }
 
-    const nodes: Node[] = await response.json()
-    console.log("Parsed nodes count:", nodes.length)
+    const responseText = await response.text()
+    console.log("[v0] Raw response length:", responseText.length)
+    console.log("[v0] Raw response preview:", responseText.substring(0, 200))
+
+    let nodes: Node[]
+    try {
+      nodes = JSON.parse(responseText)
+      console.log("[v0] JSON parsed successfully")
+    } catch (parseError) {
+      console.log("[v0] JSON parse error:", parseError)
+      throw new Error(`Failed to parse JSON response: ${parseError}`)
+    }
+
+    console.log("[v0] Parsed nodes count:", nodes.length)
+    if (nodes.length > 0) {
+      console.log("[v0] First node sample:", nodes[0])
+    }
 
     if (!Array.isArray(nodes)) {
+      console.log("[v0] Response is not an array, type:", typeof nodes)
       throw new Error("Expected array of nodes")
     }
 
-    // Count IP occurrences to track duplicates (matching your Python logic)
+    // Count IP occurrences to track duplicates
     const ipCounter = new Map<string, number>()
     nodes.forEach((node) => {
       const ip = node.address
@@ -193,59 +187,53 @@ export async function GET() {
       }
     })
 
-    // Process nodes and add coordinates (matching your Python logic)
-    const processedIPs = new Set<string>()
     const processedNodes: (Node & { lat: number; lon: number; id: string; nodeCount?: number })[] = []
+    const processedKeys = new Set<string>()
     let totalNodeCount = 0
 
-    console.log(`Processing ${nodes.length} nodes for map...`)
+    console.log(`[v0] Processing ${nodes.length} nodes for map...`)
 
     for (const node of nodes) {
       const ip = node.address
-      if (!ip) {
-        console.log("Skipping node with no IP address:", node)
+      const port = node.port
+      if (!ip || !port) {
+        console.log("[v0] Skipping node with no IP or port:", node)
         continue
       }
 
-      if (processedIPs.has(ip)) {
-        console.log(`Skipping duplicate IP: ${ip}`)
+      const nodeKey = `${ip}:${port}`
+      if (processedKeys.has(nodeKey)) {
+        console.log(`[v0] Skipping duplicate node: ${nodeKey}`)
         continue
       }
 
-      processedIPs.add(ip)
-      const coords = await getCoordinates(ip, node.country_code, cache)
+      processedKeys.add(nodeKey)
+      const coords = await getCoordinates(ip, node.country_code)
 
       if (coords) {
         const [baseLat, baseLon] = coords
         const [lat, lon] = addRandomOffset(baseLat, baseLon, 1.5)
 
-        const nodeCount = ipCounter.get(ip) || 1
         processedNodes.push({
           ...node,
           lat,
           lon,
-          id: `${ip}:${node.port}`,
-          nodeCount: nodeCount > 1 ? nodeCount : undefined,
+          id: nodeKey,
         })
 
-        // Count all nodes, including duplicates on the same IP (matching your Python logic)
-        totalNodeCount += nodeCount
+        totalNodeCount++
       } else {
-        console.log(`Could not get coordinates for IP: ${ip}`)
+        console.log(`[v0] Could not get coordinates for IP: ${ip}`)
       }
     }
 
-    // Save updated cache
-    await saveCache(cache)
-
-    console.log(`Successfully processed ${processedNodes.length} unique IPs with ${totalNodeCount} total nodes`)
+    console.log(`[v0] Successfully processed ${processedNodes.length} unique nodes`)
 
     // Group nodes by country for statistics
     const countryStats = processedNodes.reduce(
       (acc, node) => {
         const country = node.country || "Unknown"
-        const nodeCount = node.nodeCount || 1
-        acc[country] = (acc[country] || 0) + nodeCount
+        acc[country] = (acc[country] || 0) + 1
         return acc
       },
       {} as Record<string, number>,
@@ -269,7 +257,7 @@ export async function GET() {
       dataSource: "explorer.dogecoinev.com",
     }
 
-    console.log("Final result summary:", {
+    console.log("[v0] Final result summary:", {
       total: result.total,
       totalNodeCount: result.totalNodeCount,
       mapped: result.mapped,
@@ -279,9 +267,10 @@ export async function GET() {
 
     return NextResponse.json(result)
   } catch (error) {
-    console.error("Nodes API error:", error)
+    console.error("[v0] Nodes API error details:", error)
+    console.error("[v0] Error stack:", error instanceof Error ? error.stack : "No stack trace")
 
-    // Return fallback data in case of error
+    // Return proper JSON error response
     return NextResponse.json(
       {
         nodes: [],

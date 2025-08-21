@@ -79,90 +79,119 @@ export default function NodeMap() {
   // Fetch and process node data
   const fetchAndProcessNodes = async (): Promise<MapData> => {
     try {
-      try {
-        const response = await fetch("/api/nodes", {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-          },
-        })
+      console.log("[v0] Starting API fetch to /api/nodes")
+      const response = await fetch("/api/nodes", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+      })
 
-        if (response.ok) {
-          const data = await response.json()
-          if (data.nodes && Array.isArray(data.nodes)) {
-            return {
-              nodes: data.nodes,
-              total: data.total || data.nodes.length,
-              totalNodeCount: data.totalNodeCount || data.nodes.length,
-              mapped: data.mapped || data.nodes.length,
-              countries: data.countries || 0,
-              topCountries: data.topCountries || [],
-              lastUpdate: data.lastUpdate || new Date().toISOString(),
+      console.log("[v0] API response status:", response.status)
+      console.log("[v0] API response ok:", response.ok)
+      console.log("[v0] API response headers:", Object.fromEntries(response.headers.entries()))
+
+      if (response.ok) {
+        const data = await response.json()
+        console.log("[v0] Raw API response:", data)
+        console.log("[v0] Response type:", typeof data)
+        console.log("[v0] Is array:", Array.isArray(data))
+        console.log("[v0] Response keys:", Object.keys(data || {}))
+
+        if (data && Array.isArray(data)) {
+          console.log("[v0] Processing data as direct array, length:", data.length)
+          return await processRawNodes(data)
+        } else if (data.nodes && Array.isArray(data.nodes)) {
+          console.log("[v0] Processing data.nodes array, length:", data.nodes.length)
+          return await processRawNodes(data.nodes)
+        } else if (data.peers && Array.isArray(data.peers)) {
+          console.log("[v0] Processing data.peers array, length:", data.peers.length)
+          return await processRawNodes(data.peers)
+        } else {
+          console.log("[v0] API response structure doesn't match expected format")
+          console.log("[v0] Expected: array or {nodes: array} or {peers: array}")
+          console.log("[v0] Got keys:", Object.keys(data || {}))
+        }
+      } else {
+        console.log("[v0] API response not ok, status:", response.status)
+        console.log("[v0] Response status text:", response.statusText)
+
+        try {
+          const responseText = await response.text()
+          console.log("[v0] Error response text:", responseText)
+
+          // Try to parse as JSON first
+          try {
+            const errorData = JSON.parse(responseText)
+            console.log("[v0] Error response JSON:", errorData)
+            if (errorData.error) {
+              console.log("[v0] Server error message:", errorData.error)
+              throw new Error(`Server error: ${errorData.error}`)
             }
+          } catch (jsonParseError) {
+            console.log("[v0] Response is not JSON, treating as plain text error")
+            throw new Error(`API error ${response.status}: ${responseText || response.statusText}`)
           }
+        } catch (textError) {
+          console.log("[v0] Could not read error response:", textError)
+          throw new Error(`API error ${response.status}: ${response.statusText}`)
         }
-      } catch (apiError) {}
+      }
 
-      try {
-        const response = await fetch("https://explorer.dogecoinev.com/ext/getnetworkpeers", {
-          method: "GET",
-          headers: {
-            "User-Agent": "DogecoinEV-Website/1.0",
-            Accept: "application/json",
-          },
-          mode: "cors",
-        })
-
-        if (response.ok) {
-          const rawNodes = await response.json()
-          return await processRawNodes(rawNodes)
-        }
-      } catch (directError) {}
-
+      console.log("[v0] API response not in expected format, using fallback data")
       return generateFallbackData()
     } catch (err) {
+      console.log("[v0] API fetch failed with error:", err)
+      console.log("[v0] Error type:", typeof err)
+      console.log("[v0] Error message:", err instanceof Error ? err.message : String(err))
+      console.log("[v0] Error stack:", err instanceof Error ? err.stack : "No stack trace")
       return generateFallbackData()
     }
   }
 
   // Helper function to process raw nodes
   const processRawNodes = async (rawNodes: any[]): Promise<MapData> => {
+    console.log("[v0] Starting processRawNodes with", rawNodes.length, "nodes")
+    console.log("[v0] First few nodes:", rawNodes.slice(0, 3))
+
     if (!Array.isArray(rawNodes)) {
+      console.log("[v0] rawNodes is not an array:", typeof rawNodes)
       throw new Error("Invalid data format")
     }
 
-    const ipCounter = new Map<string, number>()
+    const nodeCounter = new Map<string, number>()
     rawNodes.forEach((node: any) => {
-      if (node.address) {
-        ipCounter.set(node.address, (ipCounter.get(node.address) || 0) + 1)
+      if (node.address && node.port) {
+        const nodeKey = `${node.address}:${node.port}`
+        nodeCounter.set(nodeKey, (nodeCounter.get(nodeKey) || 0) + 1)
       }
     })
 
-    const processedIPs = new Set<string>()
-    const processedNodes: Node[] = []
+    const processedNodes = new Set<string>()
+    const processedNodesList: Node[] = []
     let totalNodeCount = 0
 
     for (const node of rawNodes) {
-      const ip = node.address
-      if (!ip || processedIPs.has(ip)) continue
+      const nodeKey = `${node.address}:${node.port}`
+      if (!node.address || !node.port || processedNodes.has(nodeKey)) continue
 
-      processedIPs.add(ip)
+      processedNodes.add(nodeKey)
 
-      const coords = await getCoordinates(ip, node.country_code)
+      const coords = await getCoordinates(node.address, node.country_code)
       if (coords) {
-        const nodeCount = ipCounter.get(ip) || 1
-        processedNodes.push({
+        const nodeCount = nodeCounter.get(nodeKey) || 1
+        processedNodesList.push({
           ...node,
           lat: coords[0],
           lon: coords[1],
-          id: `${ip}:${node.port}`,
+          id: nodeKey,
           nodeCount: nodeCount > 1 ? nodeCount : undefined,
         })
         totalNodeCount += nodeCount
       }
     }
 
-    const countryStats = processedNodes.reduce(
+    const countryStats = processedNodesList.reduce(
       (acc, node) => {
         const country = node.country || "Unknown"
         const nodeCount = node.nodeCount || 1
@@ -178,10 +207,10 @@ export default function NodeMap() {
       .map(([country, count]) => ({ country, count }))
 
     return {
-      nodes: processedNodes,
+      nodes: processedNodesList,
       total: rawNodes.length,
       totalNodeCount,
-      mapped: processedNodes.length,
+      mapped: processedNodesList.length,
       countries: Object.keys(countryStats).length,
       topCountries,
       lastUpdate: new Date().toISOString(),
