@@ -348,8 +348,13 @@ export default function ResourcesPage() {
                 <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
                   Trading Platforms
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                   {[
+                    {
+                      name: "Bitgoget Exchange",
+                      href: "https://bitgoget.com/crypto/detail/dev",
+                      description: "Primary exchange with advanced features",
+                    },
                     {
                       name: "Exbitron Exchange",
                       href: "https://app.exbitron.com/exchange/?market=DEV-USDT",
