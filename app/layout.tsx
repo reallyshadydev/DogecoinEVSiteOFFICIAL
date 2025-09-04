@@ -4,8 +4,8 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import PWAInstallPrompt from "@/components/pwa-install-prompt"
 import MobileNavigation from "@/components/mobile-navigation"
-import { ThemeProvider } from "@/components/theme-provider" // Assumed from shadcn/ui setup
-import { Toaster } from "@/components/ui/toaster" // For copy-to-clipboard feedback, etc.
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -86,6 +86,10 @@ export default function RootLayout({
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen">{children}</div>
+          {/* Mobile Footer */}
+          <div className="md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10 py-4 px-4">
+            <p className="text-gray-300 text-xs text-center">© 2025 DogecoinEV Foundation. All rights reserved.</p>
+          </div>
           <PWAInstallPrompt />
           <MobileNavigation />
           <Toaster />
