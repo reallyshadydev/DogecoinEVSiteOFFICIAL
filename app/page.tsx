@@ -12,6 +12,7 @@ export default function HomePage() {
   const [scrollY, setScrollY] = useState(0)
   const pathname = usePathname()
   const [buyModalOpen, setBuyModalOpen] = useState(false)
+  const [telegramModalOpen, setTelegramModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -35,12 +36,6 @@ export default function HomePage() {
 
   const exchanges = [
     {
-      name: "Bitgoget",
-      url: "https://bitgoget.com/crypto/detail/dev",
-      pair: "DEV Trading",
-      description: "Primary exchange with advanced features",
-    },
-    {
       name: "Exbitron",
       url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
       pair: "DEV/USDT",
@@ -51,6 +46,21 @@ export default function HomePage() {
       url: "https://trade.nestex.one/spot/DEV",
       pair: "DEV Spot Trading",
       description: "Modern trading interface",
+    },
+  ]
+
+  const telegramGroups = [
+    {
+      name: "DogecoinEV Official",
+      url: "https://t.me/DEVOFFICIALTG",
+      description: "Main English community chat",
+      language: "🇺🇸 English",
+    },
+    {
+      name: "DogecoinEV 中文",
+      url: "https://t.me/DogecoinEV",
+      description: "Chinese community chat",
+      language: "🇨🇳 中文",
     },
   ]
 
@@ -204,15 +214,73 @@ export default function HomePage() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
 
+                <Dialog open={telegramModalOpen} onOpenChange={setTelegramModalOpen}>
+                  <DialogTrigger asChild>
+                    <button
+                      className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 min-h-[48px]"
+                      style={{ WebkitTapHighlightColor: "transparent" }}
+                    >
+                      <MessageCircle className="w-5 h-5" />
+                      Telegram
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-lg bg-slate-900 border-purple-500/30 text-white">
+                    <DialogHeader>
+                      <DialogTitle className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        Join Our Telegram Communities
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <p className="text-gray-300 text-sm">
+                        Connect with the DogecoinEV community in your preferred language:
+                      </p>
+
+                      <div className="space-y-3">
+                        {telegramGroups.map((group, index) => (
+                          <div
+                            key={index}
+                            className="bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/20 hover:border-cyan-500/50 transition-all duration-300"
+                          >
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <h3 className="font-semibold text-white">{group.name}</h3>
+                                <p className="text-sm text-gray-400">{group.language}</p>
+                                <p className="text-xs text-gray-500 mt-1">{group.description}</p>
+                              </div>
+                              <Link
+                                href={group.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-sm"
+                                onClick={() => setTelegramModalOpen(false)}
+                              >
+                                Join Chat
+                              </Link>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-3">
+                        <p className="text-cyan-300 text-xs">
+                          <strong>Note:</strong> Both communities are active and welcoming! Join the one that matches
+                          your preferred language or join both to stay connected with the global DogecoinEV community.
+                        </p>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+
                 <Link
-                  href="https://t.me/DEVOFFICIALTG"
+                  href="https://discord.gg/SVXHn3RE5K"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 min-h-[48px]"
+                  className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25 min-h-[48px]"
                   style={{ WebkitTapHighlightColor: "transparent" }}
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  Telegram
+                  <Users className="w-5 h-5" />
+                  Discord
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
 
@@ -615,6 +683,15 @@ export default function HomePage() {
             >
               <MessageCircle className="w-6 h-6" />
               <span className="sr-only">Telegram 中文</span>
+            </Link>
+            <Link
+              href="https://discord.gg/SVXHn3RE5K"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-indigo-400 transition-colors duration-300 p-2"
+              style={{ WebkitTapHighlightColor: "transparent" }}
+            >
+              <Users className="w-6 h-6" />
             </Link>
           </div>
 

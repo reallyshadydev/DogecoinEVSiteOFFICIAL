@@ -2,18 +2,19 @@ import { NextResponse } from "next/server"
 
 export async function GET() {
   try {
+    // Try to fetch from DogecoinEV explorer with timeout
     try {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 8000) // 8 second timeout
 
       const [blockCountResponse, difficultyResponse] = await Promise.all([
-        fetch("https://explorer2.dogecoinev.com/api/getblockcount", {
+        fetch("https://explorer.dogecoinev.com/api/getblockcount", {
           headers: {
             "User-Agent": "DogecoinEV-Website/1.0",
           },
           signal: controller.signal,
         }),
-        fetch("https://explorer2.dogecoinev.com/api/getdifficulty", {
+        fetch("https://explorer.dogecoinev.com/api/getdifficulty", {
           headers: {
             "User-Agent": "DogecoinEV-Website/1.0",
           },
@@ -70,12 +71,12 @@ export async function GET() {
             blocksUntilHalvening,
             estimatedDaysUntilHalvening: estimatedDays,
             lastUpdate: new Date().toISOString(),
-            source: "explorer2", // Updated source name to reflect new explorer
+            source: "explorer",
           })
         }
       }
     } catch (error) {
-      console.log("Explorer2 API error:", error) // Updated error message
+      console.log("Explorer API error:", error)
     }
 
     // Generate realistic simulated data based on time

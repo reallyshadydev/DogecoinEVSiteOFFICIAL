@@ -32,12 +32,6 @@ export default function ResourcesPage() {
 
   const exchanges = [
     {
-      name: "Bitgoget",
-      url: "https://bitgoget.com/crypto/detail/dev",
-      pair: "DEV Trading",
-      description: "Primary exchange with advanced features",
-    },
-    {
       name: "Exbitron",
       url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
       pair: "DEV/USDT",
@@ -45,7 +39,7 @@ export default function ResourcesPage() {
     },
     {
       name: "Nestex",
-      url: "https://trade.nestexchange.one/spot/DEV",
+      url: "https://trade.nestex.one/spot/DEV",
       pair: "DEV Spot Trading",
       description: "Modern trading interface",
     },
@@ -131,14 +125,6 @@ export default function ResourcesPage() {
                 }`}
               >
                 Widgets
-              </Link>
-              <Link
-                href="/market-data"
-                className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
-                  pathname === "/market-data" ? "text-purple-400" : ""
-                }`}
-              >
-                Market Data
               </Link>
               <Link
                 href="/contact"
@@ -348,13 +334,8 @@ export default function ResourcesPage() {
                 <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
                   Trading Platforms
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {[
-                    {
-                      name: "Bitgoget Exchange",
-                      href: "https://bitgoget.com/crypto/detail/dev",
-                      description: "Primary exchange with advanced features",
-                    },
                     {
                       name: "Exbitron Exchange",
                       href: "https://app.exbitron.com/exchange/?market=DEV-USDT",
@@ -466,7 +447,7 @@ export default function ResourcesPage() {
                     // Scroll to top when navigating to home
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 min-h-[48px]"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 min-h-[48px]"
                   style={{ WebkitTapHighlightColor: "transparent" }}
                 >
                   Back to Home
