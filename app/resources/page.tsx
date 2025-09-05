@@ -32,6 +32,12 @@ export default function ResourcesPage() {
 
   const exchanges = [
     {
+      name: "BitGoGet",
+      url: "https://bitgoget.com/spot/DEVUSDT",
+      pair: "DEV/USDT",
+      description: "Primary exchange",
+    },
+    {
       name: "Exbitron",
       url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
       pair: "DEV/USDT",
@@ -255,6 +261,11 @@ export default function ResourcesPage() {
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {[
+                    {
+                      name: "BitGoGet Exchange",
+                      href: "https://bitgoget.com/spot/DEVUSDT",
+                      description: "Primary DEV/USDT trading",
+                    },
                     {
                       name: "Exbitron Exchange",
                       href: "https://app.exbitron.com/exchange/?market=DEV-USDT",
