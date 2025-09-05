@@ -36,12 +36,6 @@ export default function HomePage() {
 
   const exchanges = [
     {
-      name: "BitGoGet",
-      url: "https://bitgoget.com/spot/DEVUSDT",
-      pair: "DEV/USDT",
-      description: "Primary exchange with reliable trading",
-    },
-    {
       name: "Exbitron",
       url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
       pair: "DEV/USDT",
