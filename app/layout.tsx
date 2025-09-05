@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import PWAInstallPrompt from "@/components/pwa-install-prompt"
 import MobileNavigation from "@/components/mobile-navigation"
+import SiteHeader from "@/components/site-header"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 
@@ -85,6 +86,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <SiteHeader />
           <div className="min-h-screen">{children}</div>
           {/* Mobile Footer */}
           <div className="md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10 py-4 px-4">
