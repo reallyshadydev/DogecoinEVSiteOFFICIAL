@@ -45,7 +45,7 @@ export default function ResourcesPage() {
     },
     {
       name: "Nestex",
-      url: "https://trade.nestex.one/spot/DEV",
+      url: "https://trade.nestexchange.com/spot/DEV",
       pair: "DEV Spot Trading",
       description: "Modern trading interface",
     },
@@ -159,9 +159,9 @@ export default function ResourcesPage() {
                       description: "Alternative blockchain explorer",
                     },
                     {
-                      name: "Mempool Explorer",
-                      href: "https://dev-mempool.space",
-                      description: "View mempool and transaction data",
+                      name: "Dedoo Explorer",
+                      href: "https://dev-explorer.dedoo.xyz",
+                      description: "Advanced blockchain explorer by Dedoo",
                     },
                   ].map((item, index) => (
                     <Link
@@ -377,7 +377,7 @@ export default function ResourcesPage() {
                     // Scroll to top when navigating to home
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 min-h-[48px]"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 min-h-[48px]"
                   style={{ WebkitTapHighlightColor: "transparent" }}
                 >
                   Back to Home
