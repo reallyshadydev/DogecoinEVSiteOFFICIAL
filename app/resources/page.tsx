@@ -203,11 +203,6 @@ export default function ResourcesPage() {
                       description: "Official desktop wallet for Windows",
                     },
                     {
-                      name: "Plugz Wallet (Mobile)",
-                      href: "https://Blockchainplugz.com",
-                      description: "Mobile wallet application",
-                    },
-                    {
                       name: "Dedoo Wallet (Browser Extension)",
                       href: "https://chromewebstore.google.com/detail/dedoo-wallet/idkbhaiccmgojcojeciglmbcjfpocpol",
                       description: "Multi-chain browser extension wallet",
