@@ -15,6 +15,7 @@ export default function SiteHeader() {
     { name: "Node Map", href: "/node-map" },
     { name: "Widgets", href: "/widgets" },
     { name: "Market Data", href: "/market-data" },
+    { name: "Donations", href: "/donations" },
     { name: "Contact", href: "/contact" },
   ]
 

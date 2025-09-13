@@ -38,6 +38,12 @@ export default function ResourcesPage() {
       description: "Primary exchange",
     },
     {
+      name: "BitGoGet",
+      url: "https://bitgoget.com/spot/DEVBGG",
+      pair: "DEV/BGG",
+      description: "Alternative trading pair",
+    },
+    {
       name: "Exbitron",
       url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
       pair: "DEV/USDT",
@@ -260,6 +266,11 @@ export default function ResourcesPage() {
                       name: "BitGoGet Exchange",
                       href: "https://bitgoget.com/spot/DEVUSDT",
                       description: "Primary DEV/USDT trading",
+                    },
+                    {
+                      name: "BitGoGet Exchange",
+                      href: "https://bitgoget.com/spot/DEVBGG",
+                      description: "Trade DEV/BGG pairs",
                     },
                     {
                       name: "Exbitron Exchange",

@@ -17,6 +17,7 @@ import {
   BookOpen,
   Pickaxe,
   TrendingUp,
+  Heart,
 } from "lucide-react"
 import { XIcon } from "@/components/x-icon"
 import { cn } from "@/lib/utils"
@@ -29,6 +30,7 @@ const navigationItems = [
   { name: "Node Map", href: "/node-map", icon: Map },
   { name: "Widgets", href: "/widgets", icon: BarChart3 },
   { name: "Market Data", href: "/market-data", icon: TrendingUp },
+  { name: "Donations", href: "/donations", icon: Heart },
   { name: "Contact", href: "/contact", icon: Phone },
 ]
 
