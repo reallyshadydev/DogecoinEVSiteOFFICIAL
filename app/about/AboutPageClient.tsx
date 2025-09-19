@@ -55,6 +55,99 @@ export default function AboutPageClient() {
           </div>
         </section>
 
+        {/* What is DogecoinEV Section */}
+        <section className="py-16 md:py-20 relative">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12 md:mb-16">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  What is DogecoinEV?
+                </h2>
+                <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+                  The next evolution of cryptocurrency that combines the best of Dogecoin's community spirit with cutting-edge blockchain technology
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center mb-16">
+                <div className="order-2 lg:order-1">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                    The Evolution of Dogecoin
+                  </h3>
+                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                      DogecoinEV (DEV) represents the next generation of cryptocurrency, building upon the beloved legacy of Dogecoin while introducing advanced blockchain capabilities. We've taken the fun, community-driven spirit of the original Dogecoin and enhanced it with modern technology.
+                    </p>
+                    <p>
+                      Launched on January 26, 2025, DogecoinEV combines the accessibility and humor that made Dogecoin famous with serious blockchain innovations including faster transactions, enhanced security, and scalable infrastructure.
+                    </p>
+                    <p>
+                      Our mission is simple: make cryptocurrency fun, accessible, and beneficial for everyone while maintaining the "much wow" factor that defines our community.
+                    </p>
+                  </div>
+                </div>
+                <div className="order-1 lg:order-2">
+                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="text-center">
+                        <div className="text-3xl mb-2">🚀</div>
+                        <h4 className="font-bold text-white mb-2">Fast</h4>
+                        <p className="text-sm text-gray-400">Lightning-fast transactions</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl mb-2">🔒</div>
+                        <h4 className="font-bold text-white mb-2">Secure</h4>
+                        <p className="text-sm text-gray-400">Advanced blockchain security</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl mb-2">🌍</div>
+                        <h4 className="font-bold text-white mb-2">Global</h4>
+                        <p className="text-sm text-gray-400">Worldwide accessibility</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl mb-2">❤️</div>
+                        <h4 className="font-bold text-white mb-2">Community</h4>
+                        <p className="text-sm text-gray-400">Driven by the people</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">⚡</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Technical Innovation</h3>
+                  <p className="text-gray-300 text-sm">
+                    Built on advanced blockchain technology with improved scalability, security, and transaction speed compared to traditional cryptocurrencies.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🐕</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Community Spirit</h3>
+                  <p className="text-gray-300 text-sm">
+                    Maintaining the fun, approachable, and inclusive culture that made Dogecoin beloved while fostering a supportive global community.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🌙</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Future Vision</h3>
+                  <p className="text-gray-300 text-sm">
+                    Committed to continuous evolution, bringing new features, partnerships, and real-world utility to make cryptocurrency accessible to everyone.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Technical Specifications */}
         <section className="py-16 md:py-20 relative">
           <div className="container mx-auto px-4 md:px-6">
@@ -228,6 +321,194 @@ export default function AboutPageClient() {
                   </ul>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Logo Section */}
+        <section className="py-16 md:py-20 relative">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-8 md:mb-12">
+                <div className="inline-block p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2ndlogo-c0jK0sFxVm0b23MMF2PaAdkIdKmN6r.png"
+                    alt="DogecoinEV Secondary Logo"
+                    width={250}
+                    height={250}
+                    className="mx-auto md:w-[300px] md:h-[300px]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Primary Logo
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                    This design fuses the recognizable Shiba Inu—emblematic of Dogecoin's vibrant community—with dynamic
+                    elements inspired by Elon Musk and Tesla's innovative legacy.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    Secondary Logo
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                    Featuring a stylized "D" intertwined with an "X"—a nod to X (formerly Twitter)—this logo symbolizes
+                    the synergy between Dogecoin's community roots and modern technological progress.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Inspiring Message Section with Shiba */}
+        <section className="py-16 md:py-20 relative">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div className="order-2 lg:order-1">
+                  <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    From Meme to Movement
+                  </h2>
+                  <div className="space-y-4 md:space-y-6 text-base md:text-lg text-gray-300 leading-relaxed">
+                    <p>
+                      What started as a playful tribute to the beloved Shiba Inu has evolved into something
+                      extraordinary. DogecoinEV represents the perfect fusion of community spirit and cutting-edge
+                      blockchain technology.
+                    </p>
+                    <p>
+                      We believe that the future of cryptocurrency shouldn't be complicated or exclusive. Just like our
+                      four-legged mascot, DogecoinEV is approachable, reliable, and always ready for the next adventure.
+                    </p>
+                    <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                      "Much speed. Very scale. Such wow!" 🚀
+                    </p>
+                  </div>
+                </div>
+
+                <div className="order-1 lg:order-2 relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-25 animate-pulse"></div>
+                  <div className="relative bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/20 hover:border-purple-500/50 transition-all duration-300">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20May%2025%2C%202025%2C%2005_38_45%20PM-ikjXSoXFswlY3teLCLwzef2qA5mdlq.png"
+                      alt="DogecoinEV Shiba Inu Mascot"
+                      width={400}
+                      height={400}
+                      className="mx-auto rounded-2xl hover:scale-105 transition-transform duration-300"
+                      priority
+                    />
+                    <div className="mt-4 text-center">
+                      <div className="text-lg font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                        Chief Executive Doge
+                      </div>
+                      <div className="text-sm text-gray-400 mt-1">Professional. Reliable. Much Business. 🚀</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Brand Identity Section */}
+        <section className="py-16 md:py-20 relative">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12 md:mb-16">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Our Brand Identity
+                </h2>
+                <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+                  More than just logos and colors - our brand represents a movement towards accessible, fun, and innovative cryptocurrency
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 mb-16">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Brand Personality
+                  </h3>
+                  <div className="space-y-4 text-gray-300">
+                    <p>
+                      DogecoinEV embodies the perfect fusion of <strong className="text-purple-400">playful accessibility</strong> and <strong className="text-pink-400">serious innovation</strong>. We're the cryptocurrency that doesn't take itself too seriously while delivering serious value.
+                    </p>
+                    <p>
+                      Our brand voice is <strong className="text-blue-400">approachable, enthusiastic, and inclusive</strong>. We speak in a language that everyone can understand, whether you're a crypto veteran or just getting started.
+                    </p>
+                    <p>
+                      We believe that the future of blockchain should be <strong className="text-green-400">fun, accessible, and beneficial for everyone</strong> - not just the technically elite.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    Brand Values
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
+                      <h4 className="font-bold text-white mb-2 flex items-center gap-2">
+                        <span className="text-yellow-400">🌟</span> Innovation with Heart
+                      </h4>
+                      <p className="text-gray-300 text-sm">Cutting-edge technology wrapped in warmth and community spirit</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
+                      <h4 className="font-bold text-white mb-2 flex items-center gap-2">
+                        <span className="text-green-400">🌱</span> Accessibility First
+                      </h4>
+                      <p className="text-gray-300 text-sm">Making cryptocurrency approachable for everyone, everywhere</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
+                      <h4 className="font-bold text-white mb-2 flex items-center gap-2">
+                        <span className="text-purple-400">🤝</span> Community Driven
+                      </h4>
+                      <p className="text-gray-300 text-sm">Built by the people, for the people, with the people</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
+                      <h4 className="font-bold text-white mb-2 flex items-center gap-2">
+                        <span className="text-pink-400">🎯</span> Transparency
+                      </h4>
+                      <p className="text-gray-300 text-sm">Open, honest, and clear communication in everything we do</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🎨</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Visual Identity</h3>
+                  <p className="text-gray-300 text-sm">
+                    Our purple and pink gradients symbolize innovation and creativity, while the Shiba Inu mascot represents our playful, community-driven approach to serious technology.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">💬</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Communication Style</h3>
+                  <p className="text-gray-300 text-sm">
+                    Friendly, enthusiastic, and clear. We use "much wow" language that's fun but professional, making complex blockchain concepts accessible to everyone.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🌍</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">Global Impact</h3>
+                  <p className="text-gray-300 text-sm">
+                    We're building a worldwide community that transcends borders, languages, and technical barriers to make cryptocurrency truly universal.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

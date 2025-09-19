@@ -13,6 +13,7 @@ export default function SiteHeader() {
   const navigationItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    { name: "Roadmap", href: "/roadmap" },
     { name: "Mining", href: "/mining" },
     { name: "Wallets", href: "/wallets" },
     { name: "Explorers", href: "/explorers" },
