@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 export default function MiningPage() {
   const pathname = usePathname()
 
-  const miningPools = [
+  const allMiningPools = [
     {
       name: "LongPool",
       url: "https://longpool.org/",
@@ -18,9 +18,21 @@ export default function MiningPage() {
       featured: true,
     },
     {
+      name: "Hash-Hut",
+      url: "https://hash-hut.net/",
+      description: "Advanced mining pool with lowest rejection rates and innovative reward distribution",
+      featured: true,
+    },
+    {
       name: "ZergPool",
-      url: "http://zergpool.com",
-      description: "Multi-algorithm mining pool with auto-switching",
+      url: "https://zergpool.com/",
+      description: "Multi-algorithm mining pool with auto-switching and comprehensive coin support",
+      featured: false,
+    },
+    {
+      name: "ZPool",
+      url: "https://zpool.ca/",
+      description: "Multi-algorithm pool with SSL/TLS support and flexible payout options",
       featured: false,
     },
   ]
@@ -76,7 +88,7 @@ export default function MiningPage() {
                 Join thousands of miners securing the DogecoinEV network and earning DEV rewards with Scrypt mining
               </p>
 
-              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-16 px-4">
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12 px-4">
                 <Link
                   href="https://miningpoolstats.stream/dogecoinev"
                   target="_blank"
@@ -88,6 +100,41 @@ export default function MiningPage() {
                   Pool Stats
                   <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
+              </div>
+
+              {/* All Mining Pools */}
+              <div className="max-w-6xl mx-auto px-4">
+                <h3 className="text-xl md:text-2xl font-bold mb-6 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  All Mining Pools
+                </h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                  {allMiningPools.map((pool, index) => (
+                    <Card
+                      key={index}
+                      className={`bg-white/10 backdrop-blur-md border border-white/20 hover:border-purple-500/50 transition-all duration-300 transform hover:scale-105 ${pool.featured ? "ring-2 ring-purple-500/50" : ""}`}
+                    >
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center justify-between">
+                          <CardTitle className="text-white text-lg">{pool.name}</CardTitle>
+                          {pool.featured && (
+                            <Badge className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs">Featured</Badge>
+                          )}
+                        </div>
+                        <CardDescription className="text-gray-300 text-sm">{pool.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="pt-0">
+                        <Button
+                          asChild
+                          className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-400 hover:to-cyan-400 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 text-sm"
+                        >
+                          <Link href={pool.url} target="_blank" rel="noopener noreferrer">
+                            Visit Pool <ExternalLink className="ml-2 h-3 w-3" />
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -234,8 +281,8 @@ export default function MiningPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
-              {miningPools.map((pool, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+              {allMiningPools.map((pool, index) => (
                 <Card
                   key={index}
                   className={`bg-white/10 backdrop-blur-md border border-white/20 hover:border-purple-500/50 transition-all duration-300 transform hover:scale-105 ${pool.featured ? "ring-2 ring-purple-500/50" : ""}`}
