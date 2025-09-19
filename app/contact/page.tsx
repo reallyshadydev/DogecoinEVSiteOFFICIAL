@@ -231,7 +231,7 @@ export default function ContactPage() {
                 {
                   question: "Can I partner with DogecoinEV for business opportunities?",
                   answer:
-                    "Yes! We're always open to partnerships. Please reach out via email at reallyshadydev@dogecoinev.com for business inquiries and partnership opportunities.",
+                    "Yes! We're always open to partnerships. Please reach out via Discord or Telegram for business inquiries and partnership opportunities.",
                 },
               ].map((faq, index) => (
                 <div
