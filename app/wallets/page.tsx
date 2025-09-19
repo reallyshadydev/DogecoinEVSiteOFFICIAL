@@ -5,22 +5,17 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
-  Github,
   ExternalLink,
-  MessageCircle,
   Globe,
   Download,
-  TrendingUp,
-  Database,
   Zap,
   Star,
   ArrowRight,
-  Users,
+  TrendingUp,
 } from "lucide-react"
-import { XIcon } from "@/components/x-icon"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
-export default function ResourcesPage() {
+export default function WalletsPage() {
   const [scrollY, setScrollY] = useState(0)
   const pathname = usePathname()
   const [buyModalOpen, setBuyModalOpen] = useState(false)
@@ -69,38 +64,142 @@ export default function ResourcesPage() {
         </div>
       </div>
 
-      {/* Header moved to Root Layout */}
-
       <main className="relative z-10 pb-20 md:pb-0">
         {/* Hero Section */}
         <section className="py-16 md:py-32 text-center relative">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full px-4 py-2 mb-6 md:mb-8 border border-purple-500/30">
-                <Star className="w-4 h-4 text-yellow-400" />
-                <span className="text-sm font-medium">Ecosystem Resources</span>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full px-4 py-2 mb-6 md:mb-8 border border-green-500/30">
+                <Zap className="w-4 h-4 text-green-400" />
+                <span className="text-sm font-medium">Secure Your DEV</span>
               </div>
 
-              <h1 className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent leading-tight">
-                Resources &
+              <h1 className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-emerald-200 bg-clip-text text-transparent leading-tight">
+                DEV
                 <br />
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent">
-                  Links
+                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                  Wallets
                 </span>
               </h1>
 
               <p className="text-lg md:text-2xl text-gray-300 mb-8 md:mb-12 leading-relaxed max-w-3xl mx-auto px-4">
-                Everything you need to get started with DogecoinEV - from wallets and explorers to trading platforms and
-                community links.
+                Choose the perfect wallet to store, send, and receive your DogecoinEV tokens securely.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Links Section */}
+        {/* Wallets Section */}
         <section className="py-16 md:py-20 relative">
           <div className="container mx-auto px-4 md:px-6">
             <div className="space-y-12 md:space-y-16">
+              {/* Wallets */}
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                  Available Wallets
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                  {[
+                    {
+                      name: "MyDEV Wallet",
+                      href: "https://mydevwallet.com",
+                      description: "Web-based wallet for DogecoinEV",
+                    },
+                    {
+                      name: "Core Wallet (Windows)",
+                      href: "https://github.com/DogecoinEV-Foundation/DogecoinEV/releases/download/v1.1.0-update1/dogecoinev-qt.1.exe",
+                      description: "Official desktop wallet for Windows",
+                    },
+                    {
+                      name: "Dedoo Wallet (Browser Extension)",
+                      href: "https://chromewebstore.google.com/detail/dedoo-wallet/idkbhaiccmgojcojeciglmbcjfpocpol",
+                      description: "Multi-chain browser extension wallet",
+                      website: "https://dedoo.xyz/",
+                    },
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group block p-4 md:p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:border-green-500/50 transition-all duration-300 transform hover:scale-105"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                          <Zap className="w-5 h-5 text-white flex-shrink-0" />
+                        </div>
+                        <span className="font-semibold text-white group-hover:text-green-300 transition-colors duration-300 text-sm md:text-base">
+                          {item.name}
+                        </span>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-3">{item.description}</p>
+                      <div className="flex flex-col gap-2">
+                        <Link
+                          href={item.href}
+                          target="_blank"
+                          className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors duration-300 text-sm"
+                          style={{ WebkitTapHighlightColor: "transparent" }}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          {item.name.includes("Extension") ? "Install Extension" : "Download"}
+                        </Link>
+                        {item.website && (
+                          <Link
+                            href={item.website}
+                            target="_blank"
+                            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 text-sm"
+                            style={{ WebkitTapHighlightColor: "transparent" }}
+                          >
+                            <Globe className="w-4 h-4" />
+                            Learn More
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Wallet Features */}
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  Wallet Features
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  {[
+                    {
+                      title: "Secure Storage",
+                      description: "Your private keys are encrypted and stored securely on your device",
+                      icon: "🔐",
+                    },
+                    {
+                      title: "Easy Transactions",
+                      description: "Send and receive DEV tokens with just a few clicks",
+                      icon: "⚡",
+                    },
+                    {
+                      title: "Multi-Platform",
+                      description: "Available on desktop, web, and mobile platforms",
+                      icon: "📱",
+                    },
+                    {
+                      title: "Open Source",
+                      description: "All wallets are open source and audited for security",
+                      icon: "🔍",
+                    },
+                  ].map((feature, index) => (
+                    <div
+                      key={index}
+                      className="p-4 md:p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:border-blue-500/50 transition-all duration-300"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="text-2xl">{feature.icon}</div>
+                        <h4 className="font-semibold text-white text-sm md:text-base">
+                          {feature.title}
+                        </h4>
+                      </div>
+                      <p className="text-gray-400 text-sm">{feature.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -109,63 +208,19 @@ export default function ResourcesPage() {
         <section className="py-16 md:py-20 relative">
           <div className="container mx-auto px-4 md:px-6 text-center">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
                 Ready to Get Started?
               </h2>
               <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-12 leading-relaxed px-4">
-                Download wallets, explore the blockchain, trade DEV, access developer resources, join our community, or start exploring the DogecoinEV ecosystem today.
+                Download a wallet today and start managing your DogecoinEV tokens securely.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
                 <Link
-                  href="/wallets"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 min-h-[48px]"
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                >
-                  <Zap className="w-5 h-5" />
-                  View Wallets
-                </Link>
-                <Link
-                  href="/explorers"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 min-h-[48px]"
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                >
-                  <Database className="w-5 h-5" />
-                  Explore Blockchain
-                </Link>
-                <Link
-                  href="/trading"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-500 hover:to-orange-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/25 min-h-[48px]"
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                >
-                  <TrendingUp className="w-5 h-5" />
-                  Start Trading
-                </Link>
-                <Link
-                  href="/developer"
+                  href="/resources"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 min-h-[48px]"
                   style={{ WebkitTapHighlightColor: "transparent" }}
                 >
-                  <Github className="w-5 h-5" />
-                  Developer Tools
-                </Link>
-                <Link
-                  href="/community"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/25 min-h-[48px]"
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                >
-                  <Users className="w-5 h-5" />
-                  Join Community
-                </Link>
-                <Link
-                  href="/"
-                  onClick={() => {
-                    // Scroll to top when navigating to home
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-gray-600 to-slate-600 hover:from-gray-500 hover:to-slate-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-gray-500/25 min-h-[48px]"
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                >
-                  Back to Home
+                  View All Resources
                 </Link>
                 <Dialog open={buyModalOpen} onOpenChange={setBuyModalOpen}>
                   <DialogTrigger asChild>

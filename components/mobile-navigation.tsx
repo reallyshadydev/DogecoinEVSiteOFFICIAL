@@ -18,6 +18,10 @@ import {
   Pickaxe,
   TrendingUp,
   Heart,
+  Wallet,
+  Search,
+  Code,
+  DollarSign,
 } from "lucide-react"
 import { XIcon } from "@/components/x-icon"
 import { cn } from "@/lib/utils"
@@ -26,10 +30,14 @@ const navigationItems = [
   { name: "Home", href: "/", icon: Home },
   { name: "About", href: "/about", icon: Info },
   { name: "Mining", href: "/mining", icon: Pickaxe },
-  { name: "Resources", href: "/resources", icon: BookOpen },
+  { name: "Wallets", href: "/wallets", icon: Wallet },
+  { name: "Explorers", href: "/explorers", icon: Search },
+  { name: "Trading", href: "/trading", icon: TrendingUp },
+  { name: "Developer", href: "/developer", icon: Code },
+  { name: "Community", href: "/community", icon: Users },
   { name: "Node Map", href: "/node-map", icon: Map },
   { name: "Widgets", href: "/widgets", icon: BarChart3 },
-  { name: "Market Data", href: "/market-data", icon: TrendingUp },
+  { name: "Market Data", href: "/market-data", icon: DollarSign },
   { name: "Donations", href: "/donations", icon: Heart },
   { name: "Contact", href: "/contact", icon: Phone },
 ]
@@ -91,7 +99,12 @@ export default function MobileNavigation() {
           <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-xl border-t border-white/10"></div>
           <div className="relative px-2 pt-2 pb-4">
             <div className="flex items-center justify-around">
-              {navigationItems.slice(0, 4).map((item) => {
+              {[
+                { name: "Home", href: "/", icon: Home },
+                { name: "Wallets", href: "/wallets", icon: Wallet },
+                { name: "Trading", href: "/trading", icon: TrendingUp },
+                { name: "Explorers", href: "/explorers", icon: Search },
+              ].map((item) => {
                 const Icon = item.icon
                 const isActive = pathname === item.href
                 return (
