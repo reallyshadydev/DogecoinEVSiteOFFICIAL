@@ -85,7 +85,7 @@ export default function WidgetsPage() {
                     <PriceWidget />
                   </div>
                   <p className="text-gray-300 text-sm mt-4 text-center">
-                    Live DEV price with 24-hour change data from LiveCoinWatch
+                    Live DEV price with 24-hour change data from multiple exchanges
                   </p>
                 </div>
 

@@ -3,13 +3,48 @@
 import { useState, useEffect } from "react"
 import { TrendingUp, TrendingDown, RefreshCw, DollarSign, AlertCircle } from "lucide-react"
 
+interface Exchange {
+  name: string
+  price: number
+  change24h?: number
+  volume24h?: number
+  marketCap?: number
+  rank?: number
+  url?: string
+  depositEnabled?: boolean
+  withdrawalEnabled?: boolean
+  depositFee?: number
+  withdrawFee?: number
+  minDeposit?: number
+  minWithdraw?: number
+  precision?: number
+  iconUrl?: string
+}
+
+interface Arbitrage {
+  opportunity: boolean
+  percentage: number
+  priceDifference: number
+  cheapest: Exchange
+  expensive: Exchange
+  profitPer1000: string
+}
+
 interface PriceData {
   price: string
   change24h?: number
   volume24h?: number
+  marketCap?: number
+  rank?: number
   lastUpdate: string
   source: string
   error?: string
+  ath?: number
+  athDate?: string
+  athChange?: number
+  exchanges?: Exchange[]
+  arbitrage?: Arbitrage
+  errors?: string[]
 }
 
 export function PriceWidget() {
@@ -104,11 +139,12 @@ export function PriceWidget() {
       <div className="flex items-center justify-center gap-2 mb-2">
         <DollarSign className="w-5 h-5 text-orange-400" />
         <span className="text-orange-400 font-bold text-lg">DEV Price</span>
-        {error && <AlertCircle className="w-4 h-4 text-red-400" title={error} />}
+        {error && <AlertCircle className="w-4 h-4 text-red-400" />}
       </div>
 
       <div className="text-white font-mono text-xl font-bold mb-2">${priceData?.price || "N/A"}</div>
 
+      {/* Combined 24h Change - Show best available */}
       {priceData?.change24h !== undefined && (
         <div
           className={`flex items-center justify-center gap-1 text-sm mb-2 ${
@@ -120,14 +156,58 @@ export function PriceWidget() {
         </div>
       )}
 
-      {priceData?.volume24h && (
-        <div className="text-xs text-gray-400 mb-2">Volume: ${priceData.volume24h.toLocaleString()}</div>
+      {/* Combined Market Data */}
+      <div className="space-y-1 mb-2">
+        {priceData?.marketCap && (
+          <div className="text-xs text-gray-400">Market Cap: ${priceData.marketCap.toLocaleString()}</div>
+        )}
+
+        {priceData?.rank && (
+          <div className="text-xs text-gray-400">Rank: #{priceData.rank.toLocaleString()}</div>
+        )}
+
+        {/* Show volume from multiple sources if available */}
+        {priceData?.exchanges && priceData.exchanges.length > 0 && (
+          <div className="text-xs text-gray-400">
+            Volume: {priceData.exchanges
+              .filter(ex => ex.volume24h && ex.volume24h > 0)
+              .map(ex => `${ex.name}: $${ex.volume24h!.toLocaleString()}`)
+              .join(" | ") || "N/A"}
+          </div>
+        )}
+
+        {/* Fallback to single volume if no exchanges data */}
+        {(!priceData?.exchanges || priceData.exchanges.length === 0) && priceData?.volume24h && (
+          <div className="text-xs text-gray-400">Volume: ${priceData.volume24h.toLocaleString()}</div>
+        )}
+
+        {priceData?.athChange && (
+          <div className="text-xs text-gray-500">
+            ATH: ${priceData.ath?.toFixed(10)} ({priceData.athChange.toFixed(1)}% from ATH)
+          </div>
+        )}
+      </div>
+
+      {/* Exchange Comparison */}
+      {priceData?.exchanges && priceData.exchanges.length > 1 && (
+        <div className="bg-gray-800/50 rounded-lg p-2 mb-2">
+          <div className="text-xs text-gray-300 font-semibold mb-1">Prices:</div>
+          {priceData.exchanges.slice(0, 3).map((exchange, index) => (
+            <div key={index} className="flex justify-between items-center text-xs">
+              <span className="text-gray-400">{exchange.name}</span>
+              <span className="text-white font-mono">${exchange.price.toFixed(10)}</span>
+            </div>
+          ))}
+        </div>
       )}
 
       <div className="text-xs text-gray-400">Updated: {new Date(priceData?.lastUpdate || "").toLocaleTimeString()}</div>
 
       <div className="flex items-center justify-center gap-2 text-xs text-gray-500 mt-1">
-        <span>Source: {priceData?.source}</span>
+        <span>Sources: {priceData?.exchanges && priceData.exchanges.length > 0 
+          ? priceData.exchanges.map(ex => ex.name).join(", ")
+          : priceData?.source || "N/A"
+        }</span>
         {error && (
           <button
             onClick={handleRetry}
