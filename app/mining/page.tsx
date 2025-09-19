@@ -12,12 +12,6 @@ export default function MiningPage() {
 
   const allMiningPools = [
     {
-      name: "LongPool",
-      url: "https://longpool.org/",
-      description: "Our most notable mining pool with reliable payouts",
-      featured: true,
-    },
-    {
       name: "Hash-Hut",
       url: "https://hash-hut.net/",
       description: "Advanced mining pool with lowest rejection rates and innovative reward distribution",
@@ -107,11 +101,11 @@ export default function MiningPage() {
                 <h3 className="text-xl md:text-2xl font-bold mb-6 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                   All Mining Pools
                 </h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 justify-items-center">
                   {allMiningPools.map((pool, index) => (
                     <Card
                       key={index}
-                      className={`bg-white/10 backdrop-blur-md border border-white/20 hover:border-purple-500/50 transition-all duration-300 transform hover:scale-105 ${pool.featured ? "ring-2 ring-purple-500/50" : ""}`}
+                      className={`bg-white/10 backdrop-blur-md border border-white/20 hover:border-purple-500/50 transition-all duration-300 transform hover:scale-105 w-full max-w-sm ${pool.featured ? "ring-2 ring-purple-500/50" : ""}`}
                     >
                       <CardHeader className="pb-3">
                         <div className="flex items-center justify-between">
@@ -269,61 +263,6 @@ export default function MiningPage() {
           </div>
         </section>
 
-        {/* Mining Pools */}
-        <section className="py-16 md:py-20 relative">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Recommended Mining Pools
-              </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4">
-                Join established pools for consistent rewards and reliable payouts
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
-              {allMiningPools.map((pool, index) => (
-                <Card
-                  key={index}
-                  className={`bg-white/10 backdrop-blur-md border border-white/20 hover:border-purple-500/50 transition-all duration-300 transform hover:scale-105 ${pool.featured ? "ring-2 ring-purple-500/50" : ""}`}
-                >
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-white text-xl">{pool.name}</CardTitle>
-                      {pool.featured && (
-                        <Badge className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">Featured</Badge>
-                      )}
-                    </div>
-                    <CardDescription className="text-gray-300">{pool.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button
-                      asChild
-                      className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      <Link href={pool.url} target="_blank" rel="noopener noreferrer">
-                        Visit Pool <ExternalLink className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="text-center mt-8">
-              <Link
-                href="https://miningpoolstats.stream/dogecoinev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-300"
-                style={{ WebkitTapHighlightColor: "transparent" }}
-              >
-                View all pool statistics
-                <ExternalLink className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* Mining Rig Rentals */}
         <section className="py-16 md:py-20 relative">
