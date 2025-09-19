@@ -98,8 +98,14 @@ export default function WalletsPage() {
                 <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
                   Available Wallets
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                   {[
+                    {
+                      name: "Gemma Wallet / Tip bot",
+                      href: "https://discord.gg/your-discord-link",
+                      description: "Discord tip bot for DogecoinEV",
+                      isDiscord: true,
+                    },
                     {
                       name: "MyDEV Wallet",
                       href: "https://mydevwallet.com",
@@ -138,7 +144,7 @@ export default function WalletsPage() {
                           style={{ WebkitTapHighlightColor: "transparent" }}
                         >
                           <ExternalLink className="w-4 h-4" />
-                          {item.name.includes("Extension") ? "Install Extension" : "Download"}
+                          {item.isDiscord ? "Join Discord" : item.name.includes("Extension") ? "Install Extension" : "Download"}
                         </Link>
                         {item.website && (
                           <Link
