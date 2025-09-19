@@ -98,7 +98,7 @@ export default function ExplorersPage() {
                 <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                   Available Explorers
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                   {[
                     {
                       name: "Block Explorer",
@@ -114,6 +114,11 @@ export default function ExplorersPage() {
                       name: "Dedoo Explorer",
                       href: "https://dev-explorer.dedoo.xyz",
                       description: "Advanced blockchain explorer by Dedoo",
+                    },
+                    {
+                      name: "DEV Mempool",
+                      href: "https://dev-mempool.space",
+                      description: "Mempool explorer for DEV transactions",
                     },
                   ].map((item, index) => (
                     <Link
