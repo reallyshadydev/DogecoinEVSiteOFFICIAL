@@ -9,6 +9,7 @@ import { PriceWidget } from "@/components/price-widget"
 import { BlockHeightWidget } from "@/components/block-height-widget"
 import { HalveningWidget } from "@/components/halvening-widget"
 import { NetworkStatsWidget } from "@/components/network-stats-widget"
+import SiteFooter from "@/components/site-footer"
 
 export default function WidgetsPage() {
   const [scrollY, setScrollY] = useState(0)
@@ -181,120 +182,7 @@ export default function WidgetsPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="relative z-10 bg-white/10 backdrop-blur-md border-t border-white/20 py-8 md:py-12 mb-16 md:mb-0">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <div className="mb-6 md:mb-8">
-            <Link href="/" className="inline-flex items-center gap-3 group">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-BtE0gs3U8sy7930XR6HaF5AW2vdiHj.webp"
-                alt="DogecoinEV Logo"
-                width={40}
-                height={40}
-                className="rounded-full group-hover:scale-110 transition-transform duration-300"
-              />
-              <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                DogecoinEV
-              </span>
-            </Link>
-          </div>
-
-          <div className="flex justify-center gap-4 mb-4">
-            <Link
-              href="https://twitter.com/DogecoinEV"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"
-              style={{ WebkitTapHighlightColor: "transparent" }}
-              aria-label="DogecoinEV Twitter"
-              title="DogecoinEV Twitter"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-twitter"
-              >
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 1.6 3 5.1 3 5.1-1.5-3-5-3-5.6-.4 1.9 2.1 5.4 5.4 9 6.9-3 2.2-7.2 1.1-9.9-2.3 2.6 1.4 4.8 1.3 7.5-.5-5.4-1-9.3-4.2-11.4-9C18 14.3 20 15 22 15.4"></path>
-              </svg>
-              <span className="sr-only">Twitter</span>
-            </Link>
-            <Link
-              href="https://discord.gg/CtJmV2s9JY"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"
-              style={{ WebkitTapHighlightColor: "transparent" }}
-              aria-label="DogecoinEV Discord"
-              title="DogecoinEV Discord"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-discord"
-              >
-                <path d="M17.74 12.26C15.94 11.14 14.15 10.02 12.35 8.9c-.18-.11-.36-.22-.55-.33-1.53.93-3.06 1.86-4.58 2.78-1.8 1.08-2.88 2.19-2.88 2.19s3.42 1.55 4.5 2.12c.6.3 1.2.61 1.79.91.18.1.37.21.55.31 1.53.93 3.06 1.86 4.58 2.78 1.8-1.08 2.88-2.19 2.88-2.19s-3.42-1.55-4.5-2.12c-.6-.3-1.2-.61-1.79-.91-.18-.1-.37-.21-.55-.31 0 0 .21-.13.42-.25 1.79-1.12 3.58-2.24 5.38-3.36ZM16.5 6.75c-1.24 0-2.25 1.01-2.25 2.25s1.01 2.25 2.25 2.25 2.25-1.01 2.25-2.25-1.01-2.25-2.25-2.25ZM7.5 6.75c-1.24 0-2.25 1.01-2.25 2.25s1.01 2.25 2.25 2.25 2.25-1.01 2.25-2.25-1.01-2.25-2.25-2.25Z"></path>
-              </svg>
-              <span className="sr-only">Discord</span>
-            </Link>
-            <Link
-              href="https://t.me/+sNqHBXePU9pjMjMx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"
-              style={{ WebkitTapHighlightColor: "transparent" }}
-              aria-label="DogecoinEV Telegram Group"
-              title="DogecoinEV Telegram Group"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-message-circle"
-              >
-                <path d="m3 12c0 3.41 2.18 6.34 5.4 7.59-1.22 1.22-1.97 3.05-1.9 4.91.05.83.53 1.44 1.14 1.56.41.08.83-.13 1.12-.41l2.14-2.13 3.13.78c3.42.85 6.28-.92 6.28-4.03 0-3.41-2.18-6.34-5.4-7.59 1.22-1.22 1.97-3.05 1.9-4.91-.05-.83-.53-1.44-1.14-1.56-.41-.08-.83.13-1.12.41L13.26 5.13l-3.13-.78C6.71 3.5 3.85 5.27 3.85 8.38c0 0 0 0 0 0C3 8.67 3 11.33 3 12Z"></path>
-              </svg>
-              <span className="sr-only">Telegram</span>
-            </Link>
-            <Link
-              href="https://t.me/+sNqHBXePU9pjMjMx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"
-              style={{ WebkitTapHighlightColor: "transparent" }}
-              aria-label="DogecoinEV Chinese Telegram Group"
-              title="DogecoinEV Chinese Telegram Group"
-            >
-              <MessageCircle className="w-6 h-6" />
-              <span className="sr-only">Telegram 中文</span>
-            </Link>
-          </div>
-
-          <p className="text-gray-400 mb-4 md:mb-6 text-sm md:text-base">
-            Building the future of blockchain technology, one block at a time.
-          </p>
-          <p className="text-gray-500 text-xs md:text-sm">© 2025 DogecoinEV Foundation. All rights reserved.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

@@ -6,6 +6,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { RefreshCw, Star, MessageCircle } from "lucide-react"
 import dynamic from "next/dynamic"
+import SiteFooter from "@/components/site-footer"
 
 // Dynamically import the map component to avoid SSR issues
 const NodeMap = dynamic(() => import("@/components/node-map"), {
@@ -109,108 +110,7 @@ export default function NodeMapPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="relative z-10 bg-white/10 backdrop-blur-md border-t border-white/20 py-8 md:py-12 mb-16 md:mb-0">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <div className="mb-6 md:mb-8">
-            <Link href="/" className="inline-flex items-center gap-3 group">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-BtE0gs3U8sy7930XR6HaF5AW2vdiHj.webp"
-                alt="DogecoinEV Logo"
-                width={40}
-                height={40}
-                className="rounded-full group-hover:scale-110 transition-transform duration-300"
-              />
-              <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                DogecoinEV
-              </span>
-            </Link>
-          </div>
-
-          <div className="flex justify-center gap-4 mb-4">
-            <Link
-              href="https://twitter.com/DogecoinEv"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-300 p-2"
-              style={{ WebkitTapHighlightColor: "transparent" }}
-              aria-label="DogecoinEV Twitter"
-              title="DogecoinEV Twitter"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-twitter"
-              >
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 1.6 2.8 3.5 3.2 5.5-1.4-.3-3.1-.8-4.8-1.3-1.6 1.6-3.3 3.3-5.1 4.8-2.3-2.3-4-4-5.7-6.1 2.2 1.1 4.6 1.8 6.9 2.3-.6-1.3-1.8-2.3-3.3-2.7 3.2 1.9 5.2 3.9 6.8 5.7-1-1-2.1-2-3.3-2.6 3 1.8 4.9 3.7 6.1 5.6-1.1-.6-2.3-1.1-3.6-1.7z" />
-              </svg>
-              <span className="sr-only">Twitter</span>
-            </Link>
-            <Link
-              href="https://discord.gg/CtJmV7YqK5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2"
-              style={{ WebkitTapHighlightColor: "transparent" }}
-              aria-label="DogecoinEV Discord"
-              title="DogecoinEV Discord"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-discord"
-              >
-                <path d="M21 14c-.6-1.1-1.3-2.1-2-3l-1.8-.8c.3-.7.6-1.5.7-2.3.1-.8 0-1.7-.4-2.4-.9-1.7-2-3-3.4-4.2C12.3 2.2 11 2.2 11 2.2S10 3.3 10 4.5c0 .8.2 1.6.5 2.3l-.1.2c0 0-.1 0-.1-.1-.3.7-.6 1.5-.8 2.2l-1.8.8c-.7.9-1.4 2-2 3-.6 1.1-1.3 2.1-2 3v1c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-1z" />
-                <path d="M16.5 10.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5-1.1-2.5-2.5-2.5zM7.5 10.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5-1.1-2.5-2.5-2.5z" />
-              </svg>
-              <span className="sr-only">Discord</span>
-            </Link>
-            <Link
-              href="https://t.me/+sNqHBXePU9pjMjMx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"
-              style={{ WebkitTapHighlightColor: "transparent" }}
-              aria-label="DogecoinEV Telegram Group"
-              title="DogecoinEV Telegram Group"
-            >
-              <MessageCircle className="w-6 h-6" />
-              <span className="sr-only">Telegram</span>
-            </Link>
-            <Link
-              href="https://t.me/+sNqHBXePU9pjMjMx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"
-              style={{ WebkitTapHighlightColor: "transparent" }}
-              aria-label="DogecoinEV Chinese Telegram Group"
-              title="DogecoinEV Chinese Telegram Group"
-            >
-              <MessageCircle className="w-6 h-6" />
-              <span className="sr-only">Telegram 中文</span>
-            </Link>
-          </div>
-
-          <p className="text-gray-400 mb-4 md:mb-6 text-sm md:text-base">
-            Building the future of blockchain technology, one block at a time.
-          </p>
-          <p className="text-gray-500 text-xs md:text-sm">© 2025 DogecoinEV Foundation. All rights reserved.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
