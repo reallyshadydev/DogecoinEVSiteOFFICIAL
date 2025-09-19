@@ -3,9 +3,12 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useState } from "react"
+import { Menu, X } from "lucide-react"
 
 export default function SiteHeader() {
   const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigationItems = [
     { name: "Home", href: "/" },
@@ -39,21 +42,48 @@ export default function SiteHeader() {
             </h1>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`hover:text-purple-400 transition-colors duration-300 font-medium ${
-                  pathname === item.href ? "text-purple-400" : ""
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+          {/* Desktop Hamburger Menu */}
+          <div className="hidden md:block">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6 text-white" />
+              ) : (
+                <Menu className="w-6 h-6 text-white" />
+              )}
+            </button>
+
+            {/* Desktop Dropdown Menu */}
+            {isMenuOpen && (
+              <div className="absolute top-full right-4 mt-2 w-64 bg-slate-900/95 backdrop-blur-xl border border-white/20 rounded-lg shadow-2xl py-2 z-50">
+                {navigationItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block px-4 py-3 hover:bg-white/10 transition-colors duration-300 font-medium ${
+                      pathname === item.href ? "text-purple-400 bg-purple-400/10" : "text-white"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* Overlay for desktop menu */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:block hidden"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
     </header>
   )
 }
