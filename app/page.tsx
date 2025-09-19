@@ -70,7 +70,7 @@ export default function HomePage() {
     },
     {
       name: "DogecoinEV 中文",
-      url: "https://t.me/DogecoinEV",
+      url: "https://t.me/+sNqHBXePU9pjMjMx",
       description: "Chinese community chat",
       language: "🇨🇳 中文",
     },
@@ -596,7 +596,7 @@ export default function HomePage() {
               <MessageCircle className="w-6 h-6" />
             </Link>
             <Link
-              href="https://t.me/DogecoinEV"
+              href="https://t.me/+sNqHBXePU9pjMjMx"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"

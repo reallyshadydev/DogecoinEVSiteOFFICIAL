@@ -251,7 +251,7 @@ export default function WidgetsPage() {
               <span className="sr-only">Discord</span>
             </Link>
             <Link
-              href="https://t.me/DogecoinEV"
+              href="https://t.me/+sNqHBXePU9pjMjMx"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"
@@ -276,7 +276,7 @@ export default function WidgetsPage() {
               <span className="sr-only">Telegram</span>
             </Link>
             <Link
-              href="https://t.me/DogecoinEV"
+              href="https://t.me/+sNqHBXePU9pjMjMx"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 p-2"

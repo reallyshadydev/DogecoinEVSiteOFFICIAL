@@ -277,7 +277,7 @@ export default function MobileNavigation() {
                   <ExternalLink className="w-3 h-3 ml-auto opacity-50" />
                 </Link>
                 <Link
-                  href="https://t.me/DogecoinEV"
+                  href="https://t.me/+sNqHBXePU9pjMjMx"
                   target="_blank"
                   className="flex items-center gap-3 p-3 rounded-lg text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-200 active:bg-white/20"
                   onClick={() => setIsOpen(false)}

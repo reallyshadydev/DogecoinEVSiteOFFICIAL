@@ -325,7 +325,7 @@ export default function ResourcesPage() {
                     },
                     {
                       name: "Telegram 中文",
-                      href: "https://t.me/DogecoinEV",
+                      href: "https://t.me/+sNqHBXePU9pjMjMx",
                       icon: MessageCircle,
                       description: "Chinese community group",
                     },
