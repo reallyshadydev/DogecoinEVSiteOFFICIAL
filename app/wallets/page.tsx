@@ -107,7 +107,7 @@ export default function WalletsPage() {
                     },
                     {
                       name: "Core Wallet (Windows)",
-                      href: "https://github.com/DogecoinEV-Foundation/DogecoinEV/releases/download/v1.1.0-update1/dogecoinev-qt.1.exe",
+                      href: "https://github.com/DogecoinEV-Foundation/DogecoinEV/releases/download/v1.2.0-patch/dogecoinev-qt.exe",
                       description: "Official desktop wallet for Windows",
                     },
                     {
