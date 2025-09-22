@@ -123,6 +123,12 @@ export default function WalletsPage() {
                       description: "Multi-chain browser extension wallet",
                       website: "https://dedoo.xyz/",
                     },
+                    {
+                      name: "Komodo Wallet",
+                      href: "https://app.komodoplatform.com",
+                      description: "Multi-chain wallet with atomic swap technology",
+                      website: "https://komodoplatform.com/",
+                    },
                   ].map((item, index) => (
                     <div
                       key={index}
