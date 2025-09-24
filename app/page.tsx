@@ -97,7 +97,7 @@ export default function HomePage() {
             <div className="max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full px-4 py-2 mb-6 md:mb-8 border border-purple-500/30">
                 <Star className="w-4 h-4 text-yellow-400" />
-                <span className="text-sm font-medium">Launched January 26, 2025</span>
+                <span className="text-sm font-medium">Launched January 25, 2025</span>
               </div>
 
               <h1 className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent leading-tight">
