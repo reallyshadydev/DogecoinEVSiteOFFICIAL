@@ -78,7 +78,7 @@ export default function AboutPageClient() {
                       DogecoinEV (DEV) represents the next generation of cryptocurrency, building upon the beloved legacy of Dogecoin while introducing advanced blockchain capabilities. We've taken the fun, community-driven spirit of the original Dogecoin and enhanced it with modern technology.
                     </p>
                     <p>
-                      Launched on January 26, 2025, DogecoinEV combines the accessibility and humor that made Dogecoin famous with serious blockchain innovations including faster transactions, enhanced security, and scalable infrastructure.
+                      Launched on January 25, 2025, DogecoinEV combines the accessibility and humor that made Dogecoin famous with serious blockchain innovations including faster transactions, enhanced security, and scalable infrastructure.
                     </p>
                     <p>
                       Our mission is simple: make cryptocurrency fun, accessible, and beneficial for everyone while maintaining the "much wow" factor that defines our community.
@@ -199,7 +199,7 @@ export default function AboutPageClient() {
                 },
                 {
                   title: "Launch Date",
-                  value: "Jan 26, 2025",
+                  value: "Jan 25, 2025",
                   description: "Official mainnet launch date",
                   icon: Star,
                   gradient: "from-indigo-400 to-purple-500",
