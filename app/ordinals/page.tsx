@@ -168,16 +168,28 @@ export default function OrdinalsPage() {
                       support for balances, transfers, and token metadata.
                     </p>
                     <div className="space-y-3">
-                      <Link
-                        href="https://github.com/reallyshadydev/bel-20-indexer"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm"
-                      >
-                        <Github className="w-4 h-4" />
-                        View Repository
-                        <ArrowRight className="w-3 h-3" />
-                      </Link>
+                      <div className="flex flex-col gap-2">
+                        <Link
+                          href="https://github.com/reallyshadydev/bel-20-indexer"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm"
+                        >
+                          <Github className="w-4 h-4" />
+                          View Repository
+                          <ArrowRight className="w-3 h-3" />
+                        </Link>
+                        <Link
+                          href="http://dev20.ord-dogecoinev.io/docs/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm"
+                        >
+                          <BookOpen className="w-4 h-4" />
+                          API Documentation
+                          <ArrowRight className="w-3 h-3" />
+                        </Link>
+                      </div>
                       <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3">
                         <p className="text-orange-300 text-xs">
                           <strong>Type:</strong> Token Indexer (DEV-20)
