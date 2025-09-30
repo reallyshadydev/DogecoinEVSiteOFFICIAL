@@ -17,6 +17,7 @@ export default function SiteHeader() {
     { name: "Mining", href: "/mining" },
     { name: "Wallets", href: "/wallets" },
     { name: "Explorers", href: "/explorers" },
+    { name: "Ordinals", href: "/ordinals" },
     { name: "Trading", href: "/trading" },
     { name: "Developer", href: "/developer" },
     { name: "Community", href: "/community" },

@@ -23,6 +23,7 @@ import {
   Code,
   DollarSign,
   Route,
+  Coins,
 } from "lucide-react"
 import { XIcon } from "@/components/x-icon"
 import { cn } from "@/lib/utils"
@@ -34,6 +35,7 @@ const navigationItems = [
   { name: "Mining", href: "/mining", icon: Pickaxe },
   { name: "Wallets", href: "/wallets", icon: Wallet },
   { name: "Explorers", href: "/explorers", icon: Search },
+  { name: "Ordinals", href: "/ordinals", icon: Coins },
   { name: "Trading", href: "/trading", icon: TrendingUp },
   { name: "Developer", href: "/developer", icon: Code },
   { name: "Community", href: "/community", icon: Users },
