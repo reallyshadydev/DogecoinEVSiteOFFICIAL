@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowRight, Github, Code2, ExternalLink, Coins, Terminal, BookOpen } from "lucide-react"
+import { ArrowRight, Github, Code2, ExternalLink, Coins, Terminal, BookOpen, Database } from "lucide-react"
 import SiteFooter from "@/components/site-footer"
 
 export default function OrdinalsPage() {
@@ -90,7 +90,7 @@ export default function OrdinalsPage() {
                 Developer Resources
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Ord Repository */}
                 <div className="group relative h-full">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity duration-300"></div>
@@ -149,6 +149,38 @@ export default function OrdinalsPage() {
                       <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3">
                         <p className="text-green-300 text-xs">
                           <strong>Type:</strong> CLI Minter Tool
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* BEL-20 Indexer */}
+                <div className="group relative h-full">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  <div className="relative bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 h-full flex flex-col">
+                    <div className="w-12 h-12 bg-gradient-to-r from-orange-400 to-red-500 rounded-xl flex items-center justify-center mb-4">
+                      <Database className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 text-white">DEV-20 Indexer</h3>
+                    <p className="text-gray-300 leading-relaxed mb-4 flex-grow text-sm md:text-base">
+                      Token indexer by Nintondo configured for DogecoinEV. Indexes DEV-20 tokens with full REST API 
+                      support for balances, transfers, and token metadata.
+                    </p>
+                    <div className="space-y-3">
+                      <Link
+                        href="https://github.com/reallyshadydev/bel-20-indexer"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm"
+                      >
+                        <Github className="w-4 h-4" />
+                        View Repository
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+                      <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3">
+                        <p className="text-orange-300 text-xs">
+                          <strong>Type:</strong> Token Indexer (DEV-20)
                         </p>
                       </div>
                     </div>
