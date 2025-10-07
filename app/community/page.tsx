@@ -31,18 +31,6 @@ export default function CommunityPage() {
 
   const exchanges = [
     {
-      name: "BitGoGet",
-      url: "https://bitgoget.com/spot/DEVUSDT",
-      pair: "DEV/USDT",
-      description: "Primary exchange",
-    },
-    {
-      name: "BitGoGet",
-      url: "https://bitgoget.com/spot/DEVBGG",
-      pair: "DEV/BGG",
-      description: "Alternative trading pair",
-    },
-    {
       name: "Exbitron",
       url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
       pair: "DEV/USDT",

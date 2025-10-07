@@ -45,52 +45,6 @@ export async function GET() {
       errors.push("CoinPaprika: " + error.message)
     }
 
-    // Fetch from BitGoGet Tickers API (more comprehensive data)
-    try {
-      const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 10000)
-
-      const bitGoGetResponse = await fetch("https://bitgoget.com/api/v2/spot/public/markets/tickers", {
-        headers: {
-          "User-Agent": "DogecoinEV-Site/1.0",
-        },
-        signal: controller.signal,
-        next: { revalidate: 60 },
-      })
-
-      clearTimeout(timeoutId)
-
-      if (bitGoGetResponse.ok) {
-        const data = await bitGoGetResponse.json()
-        
-        // Look for DEV/USDT ticker
-        const devTicker = data.devusdt
-        if (devTicker?.ticker) {
-          const ticker = devTicker.ticker
-          const price = parseFloat(ticker.last)
-          const totalSupply = 109056297128 // DEV total supply from CoinPaprika
-          const calculatedMarketCap = price * totalSupply
-          const change24h = parseFloat(ticker.price_change_percent.replace('%', ''))
-          
-          exchanges.push({
-            name: "BitGoGet",
-            price: price,
-            change24h: change24h,
-            volume24h: Math.round(parseFloat(ticker.volume) * 100) / 100, // Volume in USD (correct field)
-            marketCap: Math.round(calculatedMarketCap * 100) / 100, // Calculate from price * supply
-            rank: 0, // Not provided by BitGoGet
-            high24h: parseFloat(ticker.high),
-            low24h: parseFloat(ticker.low),
-            open24h: parseFloat(ticker.open),
-            avgPrice: parseFloat(ticker.avg_price),
-            url: "https://bitgoget.com/spot/DEVUSDT",
-          })
-        }
-      }
-    } catch (error) {
-      console.log("BitGoGet API error:", error)
-      errors.push("BitGoGet: " + error.message)
-    }
 
     // Fetch from LiveCoinWatch API
     try {
@@ -189,19 +143,6 @@ export async function GET() {
         rank: 4446,
         url: "https://coinpaprika.com/coin/dev-dogecoinev/",
       },
-      {
-        name: "BitGoGet",
-        price: 0.0000003787,
-        change24h: 199.60,
-        volume24h: 958.14, // Correct volume from ticker.volume field
-        marketCap: 11750.00, // Calculated: 0.0000003787 * 109056297128
-        rank: 0,
-        high24h: 0.0000030339,
-        low24h: 0.0000001249,
-        open24h: 0.0000001264,
-        avgPrice: 0.0000002671,
-        url: "https://bitgoget.com/spot/DEVUSDT",
-      }
     ]
 
     // Calculate arbitrage for mock data
