@@ -17,7 +17,6 @@ import {
   BookOpen,
   Pickaxe,
   TrendingUp,
-  Heart,
   Wallet,
   Search,
   Code,
@@ -42,7 +41,6 @@ const navigationItems = [
   { name: "Node Map", href: "/node-map", icon: Map },
   { name: "Widgets", href: "/widgets", icon: BarChart3 },
   { name: "Market Data", href: "/market-data", icon: DollarSign },
-  { name: "Donations", href: "/donations", icon: Heart },
   { name: "Contact", href: "/contact", icon: Phone },
 ]
 
