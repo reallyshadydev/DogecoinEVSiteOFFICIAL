@@ -41,6 +41,12 @@ export default function TradingPage() {
       pair: "DEV Spot Trading",
       description: "Modern trading interface",
     },
+    {
+      name: "Komodo",
+      url: "https://app.komodoplatform.com",
+      pair: "DEV Trading",
+      description: "DEX with atomic swap technology",
+    },
   ]
 
   return (
@@ -101,6 +107,12 @@ export default function TradingPage() {
                       href: "https://nex.nestexchange.com/market/DEV-USDT",
                       description: "Trade DEV/USDT pairs on NestEx",
                       pair: "DEV/USDT",
+                    },
+                    {
+                      name: "Komodo DEX",
+                      href: "https://app.komodoplatform.com",
+                      description: "Decentralized exchange with atomic swaps",
+                      pair: "DEV Trading",
                     },
                   ].map((item, index) => (
                     <Link

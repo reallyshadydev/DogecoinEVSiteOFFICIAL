@@ -42,6 +42,12 @@ export default function CommunityPage() {
       pair: "DEV Spot Trading",
       description: "Modern trading interface",
     },
+    {
+      name: "Komodo",
+      url: "https://app.komodoplatform.com",
+      pair: "DEV Trading",
+      description: "DEX with atomic swap technology",
+    },
   ]
 
   return (
