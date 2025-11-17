@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Github, MessageCircle, Zap, Shield, Users, ArrowRight, Star, TrendingUp } from "lucide-react"
+import { Github, MessageCircle, Zap, Shield, Users, ArrowRight, Star, TrendingUp, Database, Search } from "lucide-react"
 import { XIcon } from "@/components/x-icon"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import SiteFooter from "@/components/site-footer"
@@ -14,6 +14,7 @@ export default function HomePage() {
   const pathname = usePathname()
   const [buyModalOpen, setBuyModalOpen] = useState(false)
   const [telegramModalOpen, setTelegramModalOpen] = useState(false)
+  const [explorersModalOpen, setExplorersModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -68,6 +69,24 @@ export default function HomePage() {
       url: "https://t.me/DogecoinEV",
       description: "Chinese community chat",
       language: "🇨🇳 中文",
+    },
+  ]
+
+  const explorers = [
+    {
+      name: "Block Explorer",
+      url: "https://explorer.dogecoinev.com/",
+      description: "Primary blockchain explorer",
+    },
+    {
+      name: "Dedoo Explorer",
+      url: "https://dev-explorer.dedoo.xyz",
+      description: "Advanced blockchain explorer by Dedoo",
+    },
+    {
+      name: "DEV Mempool",
+      url: "https://dev-mempool.space",
+      description: "Mempool explorer for DEV transactions",
     },
   ]
 
@@ -252,6 +271,60 @@ export default function HomePage() {
                         <p className="text-blue-300 text-xs">
                           <strong>Note:</strong> Always verify you're on the official exchange website before trading.
                           Be cautious of phishing sites and double-check URLs.
+                        </p>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+
+                <Dialog open={explorersModalOpen} onOpenChange={setExplorersModalOpen}>
+                  <DialogTrigger asChild>
+                    <button
+                      className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 min-h-[48px]"
+                      style={{ WebkitTapHighlightColor: "transparent" }}
+                    >
+                      <Search className="w-5 h-5" />
+                      Explorers
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-lg bg-slate-900 border-purple-500/30 text-white">
+                    <DialogHeader>
+                      <DialogTitle className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                        Available Explorers
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <p className="text-gray-300 text-sm">Explore the DogecoinEV blockchain using these explorers:</p>
+
+                      <div className="space-y-3">
+                        {explorers.map((explorer, index) => (
+                          <div
+                            key={index}
+                            className="bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/20 hover:border-blue-500/50 transition-all duration-300"
+                          >
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <h3 className="font-semibold text-white">{explorer.name}</h3>
+                                <p className="text-xs text-gray-500 mt-1">{explorer.description}</p>
+                              </div>
+                              <Link
+                                href={explorer.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-sm"
+                                onClick={() => setExplorersModalOpen(false)}
+                              >
+                                Explore
+                              </Link>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
+                        <p className="text-blue-300 text-xs">
+                          <strong>Note:</strong> Use these explorers to view transactions, blocks, addresses, and network statistics on the DogecoinEV blockchain.
                         </p>
                       </div>
                     </div>

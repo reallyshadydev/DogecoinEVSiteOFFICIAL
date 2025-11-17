@@ -101,11 +101,6 @@ export default function ExplorersPage() {
                       description: "Primary blockchain explorer",
                     },
                     {
-                      name: "Block Explorer 2",
-                      href: "https://explorer2.dogecoinev.com",
-                      description: "Alternative blockchain explorer",
-                    },
-                    {
                       name: "Dedoo Explorer",
                       href: "https://dev-explorer.dedoo.xyz",
                       description: "Advanced blockchain explorer by Dedoo",
