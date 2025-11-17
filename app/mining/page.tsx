@@ -18,12 +18,6 @@ export default function MiningPage() {
       featured: true,
     },
     {
-      name: "ZergPool",
-      url: "https://zergpool.com/",
-      description: "Multi-algorithm mining pool with auto-switching and comprehensive coin support",
-      featured: false,
-    },
-    {
       name: "ZPool",
       url: "https://zpool.ca/",
       description: "Multi-algorithm pool with SSL/TLS support and flexible payout options",
