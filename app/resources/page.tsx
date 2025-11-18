@@ -34,6 +34,12 @@ export default function ResourcesPage() {
 
   const exchanges = [
     {
+      name: "Flexex",
+      url: "https://flexex.io/asset/DEV",
+      pair: "DEV Trading",
+      description: "Decentralized exchange for DEV",
+    },
+    {
       name: "Exbitron",
       url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
       pair: "DEV/USDT",

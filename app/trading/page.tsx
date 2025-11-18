@@ -30,6 +30,12 @@ export default function TradingPage() {
 
   const exchanges = [
     {
+      name: "Flexex",
+      url: "https://flexex.io/asset/DEV",
+      pair: "DEV Trading",
+      description: "Decentralized exchange for DEV",
+    },
+    {
       name: "Exbitron",
       url: "https://app.exbitron.com/exchange/?market=DEV-USDT",
       pair: "DEV/USDT",
@@ -96,6 +102,12 @@ export default function TradingPage() {
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {[
+                    {
+                      name: "Flexex",
+                      href: "https://flexex.io/asset/DEV",
+                      description: "Decentralized exchange for DEV",
+                      pair: "DEV Trading",
+                    },
                     {
                       name: "Exbitron Exchange",
                       href: "https://app.exbitron.com/exchange/?market=DEV-USDT",
